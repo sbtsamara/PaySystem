@@ -83,6 +83,11 @@
             <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.sonatype.sisu</groupId>
+            <artifactId>sisu-inject-bean</artifactId>
+            <version>1.4.2</version>
+        </dependency>
         <!--END Hibernate -->
     </dependencies>
 
