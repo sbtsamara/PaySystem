@@ -1,5 +1,10 @@
 package ru.home.servlets;
 
+import ru.home.appMain.AppMain;
+import ru.home.dao.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +18,10 @@ public class StartServlet extends DispatcherServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         //проверка нажатия кнопки логин
         if (req.getParameter("enter")!=null){
+            User user = AppMain.em.find(User.class,req.getParameter("login"));
             super.forward("/myServlet",req,resp);
         }
         //проверка нажатия кнопки registration

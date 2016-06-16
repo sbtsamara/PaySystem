@@ -35,12 +35,5 @@
         <servlet-name>sessionServlet</servlet-name>
         <url-pattern>/sessionServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>mainServlet</servlet-name>
-        <servlet-class>ru.home.servlets.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>mainServlet</servlet-name>
-        <url-pattern>/mainServlet</url-pattern>
-    </servlet-mapping>
+
 </web-app>
