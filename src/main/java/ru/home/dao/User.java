@@ -22,7 +22,7 @@ public class User{
     private String userPassword;
     private int addressId;
     private String roleId;
-    private Address addressesByAddressId;
+    private Address addressByAddressId;
     private Role rolesByRoleId;
 
     public User(String userId, String userPassword, int addressId, String roleId) {
@@ -103,11 +103,11 @@ public class User{
     @ManyToOne
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID", nullable = false, insertable = false, updatable = false)
     public Address getAddressesByAddressId() {
-        return addressesByAddressId;
+        return addressByAddressId;
     }
 
     public void setAddressesByAddressId(Address addressesByAddressId) {
-        this.addressesByAddressId = addressesByAddressId;
+        this.addressByAddressId = addressesByAddressId;
     }
 
     @ManyToOne
@@ -118,6 +118,15 @@ public class User{
 
     public void setRolesByRoleId(Role rolesByRoleId) {
         this.rolesByRoleId = rolesByRoleId;
+
     }
 
+    @Transient
+    public RoleEnum getRoleEnum(){
+        if (roleId.equals("RES"))return RoleEnum.RESIDENT;
+        if (roleId.equals("HOA"))return RoleEnum.HOA_EMP;
+        if (roleId.equals("PROV"))return RoleEnum.PROVIDER_EMP;
+        if (roleId.equals("ADM"))return RoleEnum.ADMIN;
+        return null;
+    }
 }
