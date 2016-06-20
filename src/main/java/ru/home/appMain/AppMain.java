@@ -16,11 +16,7 @@ import java.util.Locale;
  * Created by Иван on 11.06.2016.
  */
 public class AppMain {
-    static {
-        Locale.setDefault(Locale.ENGLISH);
-    }
-    public static final EntityManager em = Persistence.
-            createEntityManagerFactory("NewPersistenceUnit").createEntityManager();
+
     public static void main(String[] args) {
 
 /*------------- Добавление записей в базу
@@ -99,12 +95,10 @@ public class AppMain {
 
 
 /*-------------- Получение списка всех записей в таблице
-        TypedQuery<Role> query = em.createQuery("SELECT c FROM Role c",Role.class);
+        TypedQuery<Role> query = DbHelper.em.createQuery("SELECT c FROM Role c",Role.class);
         for (Role role :query.getResultList()) {
             System.out.println(role.getRoleName());
-            em.remove(role);
         }
-        em.getTransaction().commit();
 */
     }
 

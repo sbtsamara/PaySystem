@@ -1,6 +1,15 @@
 package ru.home.dao;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import ru.home.appMain.AppMain;
+import ru.home.utils.DbHelper;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Иван on 11.06.2016.
@@ -8,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USERS", schema = "PAYMENT")
 //@NamedQuery(name="USERS.findAll", query ="SELECT * FROM USERS")
-public class User {
+public class User implements UserDetails{
     private String userId;
     private String userPassword;
     private int addressId;
@@ -109,5 +118,39 @@ public class User {
 
     public void setRolesByRoleId(Role rolesByRoleId) {
         this.rolesByRoleId = rolesByRoleId;
+    }
+
+    @Transient
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> result = new ArrayList<SimpleGrantedAuthority>();
+        TypedQuery<Role> query = DbHelper.em.createQuery("SELECT c FROM Role c",Role.class);
+        for (Role role :query.getResultList()) {
+            result.add(new SimpleGrantedAuthority(role.getRoleId()));
+        }
+        return result;
+    }
+    @Transient
+    public String getPassword() {
+        return null;
+    }
+    @Transient
+    public String getUsername() {
+        return null;
+    }
+    @Transient
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+    @Transient
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+    @Transient
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+    @Transient
+    public boolean isEnabled() {
+        return true;
     }
 }

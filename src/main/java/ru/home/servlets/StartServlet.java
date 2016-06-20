@@ -2,6 +2,7 @@ package ru.home.servlets;
 
 import ru.home.appMain.AppMain;
 import ru.home.dao.User;
+import ru.home.utils.DbHelper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -21,7 +22,7 @@ public class StartServlet extends DispatcherServlet {
 
         //проверка нажатия кнопки логин
         if (req.getParameter("enter")!=null){
-            User user = AppMain.em.find(User.class,req.getParameter("login"));
+            User user = DbHelper.em.find(User.class,req.getParameter("login"));
             super.forward("/myServlet",req,resp);
         }
         //проверка нажатия кнопки registration
