@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "USERS", schema = "PAYMENT")
 //@NamedQuery(name="USERS.findAll", query ="SELECT * FROM USERS")
-public class User implements UserDetails{
+public class User{
     private String userId;
     private String userPassword;
     private int addressId;
@@ -120,37 +120,4 @@ public class User implements UserDetails{
         this.rolesByRoleId = rolesByRoleId;
     }
 
-    @Transient
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> result = new ArrayList<SimpleGrantedAuthority>();
-        TypedQuery<Role> query = DbHelper.em.createQuery("SELECT c FROM Role c",Role.class);
-        for (Role role :query.getResultList()) {
-            result.add(new SimpleGrantedAuthority(role.getRoleId()));
-        }
-        return result;
-    }
-    @Transient
-    public String getPassword() {
-        return null;
-    }
-    @Transient
-    public String getUsername() {
-        return null;
-    }
-    @Transient
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-    @Transient
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-    @Transient
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-    @Transient
-    public boolean isEnabled() {
-        return true;
-    }
 }

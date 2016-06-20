@@ -22,7 +22,7 @@ public class ServiceUser implements UserDetailsService{
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User result = DbHelper.em.find(User.class,username);
+        User result = DbHelper.getEm().find(User.class,username);
 
         if (result==null)
         {

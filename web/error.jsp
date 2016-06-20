@@ -11,6 +11,9 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Access Denied!</h1>
+    Неверный логин или пароль
+    <form action="index.jsp" method="post">
+        <input type="submit" value="Повторить"/>
+    </form>
 </body>
 </html>

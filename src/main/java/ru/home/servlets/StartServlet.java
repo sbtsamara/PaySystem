@@ -3,12 +3,14 @@ package ru.home.servlets;
 import ru.home.appMain.AppMain;
 import ru.home.dao.User;
 import ru.home.utils.DbHelper;
+import ru.home.utils.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -20,10 +22,24 @@ public class StartServlet extends DispatcherServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+
         //проверка нажатия кнопки логин
         if (req.getParameter("enter")!=null){
-            User user = DbHelper.em.find(User.class,req.getParameter("login"));
-            super.forward("/myServlet",req,resp);
+            HttpSession session = req.getSession();
+
+            String login = req.getParameter("login");
+            session.setAttribute("loginAttribute",login);
+
+            String password = req.getParameter("password");
+            session.setAttribute("passwordAttribute",password);
+
+            User user = DbHelper.getEm().find(User.class,login);
+            if (user!=null && user.getUserPassword().equals(PasswordEncoder.md5Apache(password))){
+                super.forward("/myServlet",req,resp);
+            }else {
+                super.forward("/error.jsp",req,resp);
+            }
         }
         //проверка нажатия кнопки registration
         else if (req.getParameter("register")!=null)

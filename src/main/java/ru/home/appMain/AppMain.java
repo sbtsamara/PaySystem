@@ -5,6 +5,7 @@ import ru.home.dao.Hoa;
 import ru.home.dao.Role;
 import ru.home.dao.User;
 import ru.home.utils.DbHelper;
+import ru.home.utils.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -20,6 +21,7 @@ public class AppMain {
     public static void main(String[] args) {
 
 /*------------- Добавление записей в базу
+        EntityManager em = DbHelper.getEm();
         em.getTransaction().begin();
         Role roleRes = new Role("RES", "Resident");
         Role roleProv = new Role("PROV","Provider employee");
@@ -61,10 +63,10 @@ public class AppMain {
         em.getTransaction().commit();
 
         em.getTransaction().begin();
-        User administrator = new User("Admin","Admin",1,"ADM");
-        User providerEmp = new User("Prov","Prov",1,"PROV");
-        User resident = new User("Resident","Resident",3,"RES");
-        User hoasEmp = new User("HoasEmp","Hoas",4,"HOA");
+        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,"ADM");
+        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,"PROV");
+        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,"RES");
+        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,"HOA");
         em.merge(administrator);
         em.merge(providerEmp);
         em.merge(resident);
@@ -74,28 +76,12 @@ public class AppMain {
         em.close();
 */
 
-
 /*-------------- Вытаскивание из базы по первичному ключу и удаление из базы.
-        em.getTransaction().begin();
-        Role role = em.find(Role.class,"RES");
-        em.remove(role);
-        em.getTransaction().commit();
+        User admin = em.find(User.class,"Admin");
 */
 
-
-//        Address address = em.find(Address.class,1);
-//        List<User> users = (List<User>) address.getUsersesByAddressId();
-//        for (User user: users)
-//        {
-//            System.out.println("Role = "+ user.getRoleId()+"\t|| userId = "+user.getUserId()+"\t|| password = "+user.getUserPassword());
-//        }
-
-
-
-
-
 /*-------------- Получение списка всех записей в таблице
-        TypedQuery<Role> query = DbHelper.em.createQuery("SELECT c FROM Role c",Role.class);
+        TypedQuery<Role> query = DbHelper.getEm().createQuery("SELECT c FROM Role c",Role.class);
         for (Role role :query.getResultList()) {
             System.out.println(role.getRoleName());
         }

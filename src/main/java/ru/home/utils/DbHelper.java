@@ -14,7 +14,7 @@ public class DbHelper {
     static {
         Locale.setDefault(Locale.ENGLISH);
     }
-    public static final EntityManager em = Persistence.
+    private static final EntityManager em = Persistence.
             createEntityManagerFactory("NewPersistenceUnit").createEntityManager();
 
 
@@ -22,5 +22,8 @@ public class DbHelper {
         Query q  = DbHelper.em.createQuery("SELECT c FROM "+clazz.getSimpleName()+" c",clazz);
 
         return q.getResultList().size()+1;
+    }
+    public static EntityManager getEm(){
+        return em;
     }
 }
