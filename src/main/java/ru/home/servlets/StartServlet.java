@@ -42,15 +42,10 @@ public class StartServlet extends DispatcherServlet {
                 session.setAttribute("user",user);
                 //перенаправление на кабинет для соответствующей роли.
                 if (user.getRoleEnum()== RoleEnum.RESIDENT) super.forward("/residentPage.jsp",req,resp);
-
+//СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
                 super.forward("/error.jsp",req,resp);
             }
-        }
-        //проверка нажатия кнопки registration
-        else if (req.getParameter("register")!=null)
-        {
-            super.forward("/registration.jsp",req,resp);
         }
     }
 
