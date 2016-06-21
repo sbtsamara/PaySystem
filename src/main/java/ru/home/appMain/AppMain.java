@@ -74,14 +74,14 @@ public class AppMain {
         em.merge(hoasEmp);
 
         em.getTransaction().commit();
-        */
+
         em.getTransaction().begin();
         int providerId = DbHelper.getNewId(Provider.class);
         Provider provider = new Provider(providerId++,"Dom.ru","Москва");
         Provider provider2 = new Provider(providerId++,"Водоканал","Самара");
-        Provider provider3 = new Provider(providerId++,"Газовая компания","Самара");
+        Provider provider3 = new Provider(providerId++,"Газ","Самара");
         Provider provider4 = new Provider(providerId++,"Диван тв","Казань");
-        Provider provider5 = new Provider(providerId++,"Грузоперевозка","Хабаровск");
+        Provider provider5 = new Provider(providerId++,"Груз","Хабаровск");
         em.merge(provider);
         em.merge(provider2);
         em.merge(provider3);
@@ -119,14 +119,48 @@ public class AppMain {
 
         em.getTransaction().begin();
         int chargeId = DbHelper.getNewId(Charge.class);
-        Charge charge = new Charge(chargeId++,1,600,new Date("01.02.2016"),new Date("01.03.2016"),true);
-        Charge charge2 = new Charge(chargeId++,2,100,new Date("01.02.2016"),new Date("01.03.2016"),false);
-        Charge charge3 = new Charge(chargeId++,3,600,new Date("01.01.2016"),new Date("01.03.2016"),true);
-        Charge charge4 = new Charge(chargeId++,4,600,new Date("01.03.2016"),new Date("01.05.2016"),false);
-        Charge charge5 = new Charge(chargeId++,5,600,new Date("01.01.2016"),new Date("01.04.2016"),true);
+        Charge charge = new Charge(chargeId++,1,600,new Date(),new Date(),true);
+        Charge charge2 = new Charge(chargeId++,2,100,new Date(),new Date(),false);
+        Charge charge3 = new Charge(chargeId++,3,600,new Date(),new Date(),true);
+        Charge charge4 = new Charge(chargeId++,4,600,new Date(),new Date(),false);
+        //Дата в формате ММ/dd/yyyy
+        Charge charge5 = new Charge(chargeId++,5,600,new Date("02/25/2016"),new Date("03/25/2016"),true);
+        em.merge(charge);
+        em.merge(charge2);
+        em.merge(charge3);
+        em.merge(charge4);
+        em.merge(charge5);
         em.getTransaction().commit();
 
-        
+        em.getTransaction().begin();
+        int paymentId = DbHelper.getNewId(Payment.class);
+        Payment payment = new Payment(paymentId++,1,100);
+        Payment payment2 = new Payment(paymentId++,1,500);
+        Payment payment3 = new Payment(paymentId++,6,600);
+        Payment payment4 = new Payment(paymentId++,3,200);
+        Payment payment5 = new Payment(paymentId++,3,200);
+        Payment payment6 = new Payment(paymentId++,3,200);
+        Payment payment7 = new Payment(paymentId++,5,100);
+        Payment payment8 = new Payment(paymentId++,5,250);
+        Payment payment9 = new Payment(paymentId++,5,250);
+        em.merge(payment);
+        em.merge(payment2);
+        em.merge(payment3);
+        em.merge(payment4);
+        em.merge(payment5);
+        em.merge(payment6);
+        em.merge(payment7);
+        em.merge(payment8);
+        em.merge(payment9);
+        em.getTransaction().commit();
+
+ */
+        em.getTransaction().begin();
+        int chargeId = DbHelper.getNewId(Charge.class);
+        Charge charge5 = new Charge(chargeId++,5,600,new Date("02/25/2016"),new Date("03/25/2016"),true);
+        em.merge(charge5);
+        em.getTransaction().commit();
+
 
 
 

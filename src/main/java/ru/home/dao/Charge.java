@@ -17,6 +17,7 @@ public class Charge {
     private int chargeId;
     private int abonentId;
     private int chargeAmount;
+    //Дата в формате ММ/dd/yyyy
     private Date periodBeginDate;
     private Date periodEndDate;
     private Boolean chargePaid;
