@@ -188,4 +188,5 @@ public class Address {
     public void setUsersesByAddressId(Collection<User> usersesByAddressId) {
         this.usersesByAddressId = usersesByAddressId;
     }
+
 }

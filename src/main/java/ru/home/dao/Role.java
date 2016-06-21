@@ -1,7 +1,5 @@
 package ru.home.dao;
 
-import ru.home.utils.RoleIdConverter;
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -12,11 +10,11 @@ import java.util.Collection;
 @Table(name = "ROLES", schema = "PAYMENT")
 //@NamedQuery(name="ROLES.findAll", query ="SELECT * FROM ROLES")
 public class Role {
-    private RoleId roleId;
+    private String roleId;
     private String roleName;
     private Collection<User> usersesByRoleId;
 
-    public Role(RoleId roleId, String roleName) {
+    public Role(String roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
     }
@@ -26,12 +24,11 @@ public class Role {
 
     @Id
     @Column(name = "ROLE_ID", nullable = false, length = 20)
-    @Convert(converter = RoleIdConverter.class)
-    public RoleId getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(RoleId roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
@@ -73,4 +70,6 @@ public class Role {
     public void setUsersesByRoleId(Collection<User> usersesByRoleId) {
         this.usersesByRoleId = usersesByRoleId;
     }
+
+
 }

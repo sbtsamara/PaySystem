@@ -14,7 +14,12 @@
     </properties>
 
     <dependencies>
-
+        <!-- iText for PDF -->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
         <!--driver for connection to oracle database -->
         <dependency>
         <groupId>com.oracle</groupId>

@@ -1,7 +1,9 @@
 <%@ page import="ru.home.dao.User" %>
 <%@ page import="ru.home.dao.Resident" %>
 <%@ page import="ru.home.utils.DbHelper" %>
-<%@ page import="ru.home.dao.Address" %><%--
+<%@ page import="ru.home.dao.Address" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ru.home.dao.Abonent" %><%--
   Created by IntelliJ IDEA.
   User: ivan
   Date: 20.06.16
@@ -32,5 +34,13 @@
     <form action="index.jsp" method="post">
         <input type="submit" name="exit" value="Выйти"/>
     </form>
+
+    <select>
+        <% for (Abonent abonent :address.getAbonentsesByAddressId()) {
+            String option = String.valueOf(abonent.getAbonentAccount());
+        %>
+        <option value="<%= option %>"><%= option %></option>
+        <% } %>
+    </select>
 </body>
 </html>
