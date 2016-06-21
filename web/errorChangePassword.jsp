@@ -11,7 +11,7 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Не верный пароль!</h1>
+    <h1>Неверный пароль!</h1>
     <form action="changePassword.jsp" method="post">
         <input type="submit" name="return" value="Вернуться"/>
     </form>
