@@ -25,10 +25,10 @@ public class AppMain {
 /*------------- Добавление записей в базу
         EntityManager em = DbHelper.getEm();
         em.getTransaction().begin();
-        Role roleRes = new Role(RES, "Resident");
-        Role roleProv = new Role(PROV,"Provider employee");
-        Role roleAdmin = new Role(ADM,"Administrator");
-        Role roleHoas = new Role(HOA, "Hoa employee");
+        Role roleRes = new Role("RES", "Resident");
+        Role roleProv = new Role("PROV","Provider employee");
+        Role roleAdmin = new Role("ADM","Administrator");
+        Role roleHoas = new Role("HOA", "Hoa employee");
 
         em.merge(roleRes);
         em.merge(roleHoas);
@@ -65,10 +65,10 @@ public class AppMain {
         em.getTransaction().commit();
 
         em.getTransaction().begin();
-        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,ADM);
-        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,PROV);
-        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,RES);
-        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,HOA);
+        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,"ADM");
+        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,"PROV");
+        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,"RES");
+        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,"HOA");
         em.merge(administrator);
         em.merge(providerEmp);
         em.merge(resident);
@@ -154,21 +154,9 @@ public class AppMain {
         em.merge(payment8);
         em.merge(payment9);
         em.getTransaction().commit();
+        */
 
- */
-
-
-//        Role role = DbHelper.getEm().find(Role.class,"RES");
-//        System.out.println(role.getRoleName());
-//        User user = DbHelper.getEm().find(User.class,"Resident");
-//
-//        Address address = user.getAddressesByAddressId();
-//        System.out.println(address.getAbonentsesByAddressId().size());
-//        for (Abonent abonent :address.getAbonentsesByAddressId()) {
-//            System.out.println(abonent.getAbonentAccount());
-//
-//        }
-
+        
 /*-------------- Вытаскивание из базы по первичному ключу.
         User admin = em.find(User.class,"Admin");
 */
