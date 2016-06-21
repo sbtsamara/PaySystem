@@ -1,5 +1,7 @@
 package ru.home.dao;
 
+import ru.home.utils.BooleanConverter;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Collection;
@@ -17,14 +19,14 @@ public class Charge {
     private int chargeAmount;
     private Date periodBeginDate;
     private Date periodEndDate;
-    private int chargePaid;
+    private Boolean chargePaid;
     private Abonent abonentsByAbonentId;
     private Collection<Payment> paymentsesByChargeId;
 
     public Charge() {
     }
 
-    public Charge(int chargeId, int abonentId, int chargeAmount, Date periodBeginDate, Date periodEndDate, int chargePaid) {
+    public Charge(int chargeId, int abonentId, int chargeAmount, Date periodBeginDate, Date periodEndDate, Boolean chargePaid) {
 
         this.chargeId = chargeId;
         this.abonentId = abonentId;
@@ -86,11 +88,12 @@ public class Charge {
 
     @Basic
     @Column(name = "CHARGE_PAID", nullable = true, precision = 0)
-    public int getChargePaid() {
+    @Convert(converter = BooleanConverter.class)
+    public Boolean getChargePaid() {
         return chargePaid;
     }
 
-    public void setChargePaid(int chargePaid) {
+    public void setChargePaid(Boolean chargePaid) {
         this.chargePaid = chargePaid;
     }
 
@@ -99,18 +102,20 @@ public class Charge {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Charge that = (Charge) o;
+        Charge charge = (Charge) o;
 
-        if (chargeId != that.chargeId) return false;
-        if (abonentId != that.abonentId) return false;
-        if (chargeAmount != that.chargeAmount) return false;
-        if (chargePaid != that.chargePaid) return false;
-        if (periodBeginDate != null ? !periodBeginDate.equals(that.periodBeginDate) : that.periodBeginDate != null)
+        if (chargeId != charge.chargeId) return false;
+        if (abonentId != charge.abonentId) return false;
+        if (chargeAmount != charge.chargeAmount) return false;
+        if (periodBeginDate != null ? !periodBeginDate.equals(charge.periodBeginDate) : charge.periodBeginDate != null)
             return false;
-        if (periodEndDate != null ? !periodEndDate.equals(that.periodEndDate) : that.periodEndDate != null)
+        if (periodEndDate != null ? !periodEndDate.equals(charge.periodEndDate) : charge.periodEndDate != null)
             return false;
+        if (chargePaid != null ? !chargePaid.equals(charge.chargePaid) : charge.chargePaid != null) return false;
+        if (abonentsByAbonentId != null ? !abonentsByAbonentId.equals(charge.abonentsByAbonentId) : charge.abonentsByAbonentId != null)
+            return false;
+        return paymentsesByChargeId != null ? paymentsesByChargeId.equals(charge.paymentsesByChargeId) : charge.paymentsesByChargeId == null;
 
-        return true;
     }
 
     @Override
@@ -120,7 +125,9 @@ public class Charge {
         result = 31 * result + chargeAmount;
         result = 31 * result + (periodBeginDate != null ? periodBeginDate.hashCode() : 0);
         result = 31 * result + (periodEndDate != null ? periodEndDate.hashCode() : 0);
-        result = 31 * result + chargePaid;
+        result = 31 * result + (chargePaid != null ? chargePaid.hashCode() : 0);
+        result = 31 * result + (abonentsByAbonentId != null ? abonentsByAbonentId.hashCode() : 0);
+        result = 31 * result + (paymentsesByChargeId != null ? paymentsesByChargeId.hashCode() : 0);
         return result;
     }
 

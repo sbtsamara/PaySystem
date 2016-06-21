@@ -1,13 +1,10 @@
 package ru.home.servlets;
 
-import ru.home.appMain.AppMain;
-import ru.home.dao.RoleEnum;
+import ru.home.dao.RoleId;
 import ru.home.dao.User;
 import ru.home.utils.DbHelper;
 import ru.home.utils.PasswordEncoder;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,10 +35,10 @@ public class StartServlet extends DispatcherServlet {
             User user = DbHelper.getEm().find(User.class,login);
 
             //Проверка пароля
-            if (user!=null && user.getUserPassword().equals(PasswordEncoder.md5Apache(password))){
+            if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
                 //перенаправление на кабинет для соответствующей роли.
-                if (user.getRoleEnum()== RoleEnum.RESIDENT) super.forward("/residentPage.jsp",req,resp);
+                if (user.getRoleId()== RoleId.RESIDENT) super.forward("/residentPage.jsp",req,resp);
 //СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
                 super.forward("/error.jsp",req,resp);

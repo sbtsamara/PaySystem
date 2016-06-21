@@ -1,15 +1,8 @@
 package ru.home.dao;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import ru.home.appMain.AppMain;
-import ru.home.utils.DbHelper;
+import ru.home.utils.RoleIdConverter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by Иван on 11.06.2016.
@@ -21,11 +14,11 @@ public class User{
     private String userId;
     private String userPassword;
     private int addressId;
-    private String roleId;
+    private RoleId roleId;
     private Address addressByAddressId;
     private Role rolesByRoleId;
 
-    public User(String userId, String userPassword, int addressId, String roleId) {
+    public User(String userId, String userPassword, int addressId, RoleId roleId) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.addressId = addressId;
@@ -67,11 +60,12 @@ public class User{
 
     @Basic
     @Column(name = "ROLE_ID", nullable = true, length = 20)
-    public String getRoleId() {
+    @Convert(converter = RoleIdConverter.class)
+    public RoleId getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
+    public void setRoleId(RoleId roleId) {
         this.roleId = roleId;
     }
 
@@ -121,12 +115,5 @@ public class User{
 
     }
 
-    @Transient
-    public RoleEnum getRoleEnum(){
-        if (roleId.equals("RES"))return RoleEnum.RESIDENT;
-        if (roleId.equals("HOA"))return RoleEnum.HOA_EMP;
-        if (roleId.equals("PROV"))return RoleEnum.PROVIDER_EMP;
-        if (roleId.equals("ADM"))return RoleEnum.ADMIN;
-        return null;
-    }
+
 }

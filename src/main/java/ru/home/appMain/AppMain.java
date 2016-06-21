@@ -1,9 +1,6 @@
 package ru.home.appMain;
 
-import ru.home.dao.Address;
-import ru.home.dao.Hoa;
-import ru.home.dao.Role;
-import ru.home.dao.User;
+import ru.home.dao.*;
 import ru.home.utils.DbHelper;
 import ru.home.utils.PasswordEncoder;
 
@@ -13,20 +10,22 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Locale;
 
+import static ru.home.dao.RoleId.*;
+
 /**
  * Created by Иван on 11.06.2016.
  */
 public class AppMain {
 
     public static void main(String[] args) {
-
+//ПЕРЕД ЗАПУСКОМ УБЕДИТЕСЬ ЧТО МАКСИМАЛЬНАЯ ДЛИНА ПАРОЛЯ В БАЗЕ НЕ МЕНЕЕ 32 СИМВОЛОВ
 /*------------- Добавление записей в базу
         EntityManager em = DbHelper.getEm();
         em.getTransaction().begin();
-        Role roleRes = new Role("RES", "Resident");
-        Role roleProv = new Role("PROV","Provider employee");
-        Role roleAdmin = new Role("ADM","Administrator");
-        Role roleHoas = new Role("HOA", "Hoa employee");
+        Role roleRes = new Role(RESIDENT, "Resident");
+        Role roleProv = new Role(PROVIDER_EMP,"Provider employee");
+        Role roleAdmin = new Role(ADMIN,"Administrator");
+        Role roleHoas = new Role(HOA_EMP, "Hoa employee");
 
         em.merge(roleRes);
         em.merge(roleHoas);
@@ -63,10 +62,10 @@ public class AppMain {
         em.getTransaction().commit();
 
         em.getTransaction().begin();
-        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,"ADM");
-        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,"PROV");
-        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,"RES");
-        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,"HOA");
+        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,ADMIN);
+        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,PROVIDER_EMP);
+        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,RESIDENT);
+        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,HOA_EMP);
         em.merge(administrator);
         em.merge(providerEmp);
         em.merge(resident);
@@ -75,6 +74,7 @@ public class AppMain {
         em.getTransaction().commit();
         em.close();
 */
+
 
 /*-------------- Вытаскивание из базы по первичному ключу.
         User admin = em.find(User.class,"Admin");
