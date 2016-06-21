@@ -34,15 +34,13 @@
     <form action="index.jsp" method="post">
         <input type="submit" name="exit" value="Выйти"/>
     </form>
-    <%--<%--%>
-        <%--ArrayList<Abonent> abonents = (ArrayList<Abonent>) address.getAbonentsesByAddressId();--%>
-    <%--%>--%>
-    <%--<select>--%>
-        <%--<% for (Abonent abonent :abonents) {--%>
-            <%--String option = String.valueOf(abonent.getAbonentAccount());--%>
-        <%--%>--%>
-        <%--<option value="<%= option %>"><%= option %></option>--%>
-        <%--<% } %>--%>
-    <%--</select>--%>
+
+    <select>
+        <% for (Abonent abonent :address.getAbonentsesByAddressId()) {
+            String option = String.valueOf(abonent.getAbonentAccount());
+        %>
+        <option value="<%= option %>"><%= option %></option>
+        <% } %>
+    </select>
 </body>
 </html>

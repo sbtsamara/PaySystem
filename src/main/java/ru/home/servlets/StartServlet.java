@@ -1,6 +1,5 @@
 package ru.home.servlets;
 
-import ru.home.dao.RoleId;
 import ru.home.dao.User;
 import ru.home.utils.DbHelper;
 import ru.home.utils.PasswordEncoder;
@@ -38,7 +37,7 @@ public class StartServlet extends DispatcherServlet {
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
                 //перенаправление на кабинет для соответствующей роли.
-                if (user.getRoleId()== RoleId.RES) super.forward("/residentPage.jsp",req,resp);
+                if (user.getRoleId().equals("RES")) super.forward("/residentPage.jsp",req,resp);
 //СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
                 super.forward("/error.jsp",req,resp);

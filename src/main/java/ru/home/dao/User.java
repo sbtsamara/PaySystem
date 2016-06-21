@@ -1,7 +1,5 @@
 package ru.home.dao;
 
-import ru.home.utils.RoleIdConverter;
-
 import javax.persistence.*;
 
 /**
@@ -14,11 +12,11 @@ public class User{
     private String userId;
     private String userPassword;
     private int addressId;
-    private RoleId roleId;
+    private String roleId;
     private Address addressByAddressId;
     private Role rolesByRoleId;
 
-    public User(String userId, String userPassword, int addressId, RoleId roleId) {
+    public User(String userId, String userPassword, int addressId, String roleId) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.addressId = addressId;
@@ -60,12 +58,11 @@ public class User{
 
     @Basic
     @Column(name = "ROLE_ID", nullable = true, length = 20)
-    @Convert(converter = RoleIdConverter.class)
-    public RoleId getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(RoleId roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
@@ -115,15 +112,5 @@ public class User{
 
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", addressId=" + addressId +
-                ", roleId=" + roleId +
-                ", addressByAddressId=" + addressByAddressId +
-                ", rolesByRoleId=" + rolesByRoleId +
-                '}';
-    }
+
 }

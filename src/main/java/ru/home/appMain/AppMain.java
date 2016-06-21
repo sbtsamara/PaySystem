@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static ru.home.dao.RoleId.*;
 
 /**
  * Created by Иван on 11.06.2016.
@@ -159,14 +158,13 @@ public class AppMain {
  */
 
 
-        Role role = DbHelper.getEm().find(Role.class,RES);
-        System.out.println(role);
+//        Role role = DbHelper.getEm().find(Role.class,"RES");
+//        System.out.println(role.getRoleName());
 //        User user = DbHelper.getEm().find(User.class,"Resident");
-//        System.out.println(user);
+//
 //        Address address = user.getAddressesByAddressId();
-//        System.out.println(address);
-//        ArrayList<Abonent> abonents = (ArrayList<Abonent>) address.getAbonentsesByAddressId();
-//        for (Abonent abonent :abonents) {
+//        System.out.println(address.getAbonentsesByAddressId().size());
+//        for (Abonent abonent :address.getAbonentsesByAddressId()) {
 //            System.out.println(abonent.getAbonentAccount());
 //
 //        }
