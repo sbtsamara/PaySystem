@@ -14,15 +14,18 @@ public class DbHelper {
     static {
         Locale.setDefault(Locale.ENGLISH);
     }
-    private static final EntityManager em = Persistence.
-            createEntityManagerFactory("NewPersistenceUnit").createEntityManager();
+    private static final EntityManager em = Persistence.createEntityManagerFactory("NewPersistenceUnit").createEntityManager();
 
 
+    //получает первый свободный id. Коммитить после каждого вызова, иначе вернёт неактуальный id.
     public static Integer getNewId(Class clazz){
         Query q  = DbHelper.em.createQuery("SELECT c FROM "+clazz.getSimpleName()+" c",clazz);
 
         return q.getResultList().size()+1;
     }
+
+
+
     public static EntityManager getEm(){
         return em;
     }

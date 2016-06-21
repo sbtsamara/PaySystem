@@ -18,7 +18,8 @@
         <!--driver for connection to oracle database -->
         <dependency>
         <groupId>com.oracle</groupId>
-        <artifactId>ojdbc7</artifactId>
+<!--нужно скачать ojdbc7 12.1.0 и добавить в локальный репозиторий maven -->
+            <artifactId>ojdbc7</artifactId>
         <version>12.1.0</version>
         </dependency>
 

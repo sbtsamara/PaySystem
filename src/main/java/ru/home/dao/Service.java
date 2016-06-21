@@ -1,5 +1,7 @@
 package ru.home.dao;
 
+import ru.home.utils.BooleanConverter;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -13,14 +15,14 @@ public class Service {
     private int serviceId;
     private String serviceName;
     private int providerId;
-    private int isMeter;
+    private Boolean isMeter;
     private Collection<Abonent> abonentsesByServiceId;
     private Provider providersByProviderId;
 
     public Service() {
     }
 
-    public Service(int serviceId, String serviceName, int providerId, int isMeter) {
+    public Service(int serviceId, String serviceName, int providerId, Boolean isMeter) {
 
         this.serviceId = serviceId;
         this.serviceName = serviceName;
@@ -60,11 +62,12 @@ public class Service {
 
     @Basic
     @Column(name = "IS_METER", nullable = false, precision = 0)
-    public int getIsMeter() {
+    @Convert(converter = BooleanConverter.class)
+    public Boolean getIsMeter() {
         return isMeter;
     }
 
-    public void setIsMeter(int isMeter) {
+    public void setIsMeter(Boolean isMeter) {
         this.isMeter = isMeter;
     }
 
@@ -73,14 +76,16 @@ public class Service {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Service that = (Service) o;
+        Service service = (Service) o;
 
-        if (serviceId != that.serviceId) return false;
-        if (providerId != that.providerId) return false;
-        if (isMeter != that.isMeter) return false;
-        if (serviceName != null ? !serviceName.equals(that.serviceName) : that.serviceName != null) return false;
+        if (serviceId != service.serviceId) return false;
+        if (providerId != service.providerId) return false;
+        if (isMeter != service.isMeter) return false;
+        if (serviceName != null ? !serviceName.equals(service.serviceName) : service.serviceName != null) return false;
+        if (abonentsesByServiceId != null ? !abonentsesByServiceId.equals(service.abonentsesByServiceId) : service.abonentsesByServiceId != null)
+            return false;
+        return providersByProviderId != null ? providersByProviderId.equals(service.providersByProviderId) : service.providersByProviderId == null;
 
-        return true;
     }
 
     @Override
@@ -88,7 +93,9 @@ public class Service {
         int result = serviceId;
         result = 31 * result + (serviceName != null ? serviceName.hashCode() : 0);
         result = 31 * result + providerId;
-        result = 31 * result + isMeter;
+        result = 31 * result + (isMeter ? 1 : 0);
+        result = 31 * result + (abonentsesByServiceId != null ? abonentsesByServiceId.hashCode() : 0);
+        result = 31 * result + (providersByProviderId != null ? providersByProviderId.hashCode() : 0);
         return result;
     }
 

@@ -21,7 +21,7 @@ public class ChangePassword extends DispatcherServlet {
         String newPass = (String) req.getParameter("new_password");
         String confirm = (String) req.getParameter("confirm");
 
-        if (PasswordEncoder.md5Apache(old).equals(user.getUserPassword()) && newPass.equals(confirm) && newPass.length()>=5){
+        if (PasswordEncoder.stringVsMd5(old,user.getUserPassword()) && newPass.equals(confirm) && newPass.length()>=5){
 
             DbHelper.getEm().getTransaction().begin();
             user.setUserPassword(PasswordEncoder.md5Apache(newPass));
