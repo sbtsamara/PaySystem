@@ -7,6 +7,7 @@ import ru.home.utils.PasswordEncoder;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -20,14 +21,15 @@ public class AppMain {
 
     public static void main(String[] args) {
 //ПЕРЕД ЗАПУСКОМ УБЕДИТЕСЬ ЧТО МАКСИМАЛЬНАЯ ДЛИНА ПАРОЛЯ В БАЗЕ НЕ МЕНЕЕ 32 СИМВОЛОВ
-        EntityManager em = DbHelper.getEm();
+
 
 /*------------- Добавление записей в базу
+        EntityManager em = DbHelper.getEm();
         em.getTransaction().begin();
-        Role roleRes = new Role(RESIDENT, "Resident");
-        Role roleProv = new Role(PROVIDER_EMP,"Provider employee");
-        Role roleAdmin = new Role(ADMIN,"Administrator");
-        Role roleHoas = new Role(HOA_EMP, "Hoa employee");
+        Role roleRes = new Role(RES, "Resident");
+        Role roleProv = new Role(PROV,"Provider employee");
+        Role roleAdmin = new Role(ADM,"Administrator");
+        Role roleHoas = new Role(HOA, "Hoa employee");
 
         em.merge(roleRes);
         em.merge(roleHoas);
@@ -64,10 +66,10 @@ public class AppMain {
         em.getTransaction().commit();
 
         em.getTransaction().begin();
-        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,ADMIN);
-        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,PROVIDER_EMP);
-        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,RESIDENT);
-        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,HOA_EMP);
+        User administrator = new User("Admin",PasswordEncoder.md5Apache("Admin"),1,ADM);
+        User providerEmp = new User("Prov",PasswordEncoder.md5Apache("Prov"),1,PROV);
+        User resident = new User("Resident",PasswordEncoder.md5Apache("Resident"),3,RES);
+        User hoasEmp = new User("HoasEmp",PasswordEncoder.md5Apache("Hoas"),4,HOA);
         em.merge(administrator);
         em.merge(providerEmp);
         em.merge(resident);
@@ -155,15 +157,19 @@ public class AppMain {
         em.getTransaction().commit();
 
  */
-        em.getTransaction().begin();
-        int chargeId = DbHelper.getNewId(Charge.class);
-        Charge charge5 = new Charge(chargeId++,5,600,new Date("02/25/2016"),new Date("03/25/2016"),true);
-        em.merge(charge5);
-        em.getTransaction().commit();
 
 
-
-
+        Role role = DbHelper.getEm().find(Role.class,RES);
+        System.out.println(role);
+//        User user = DbHelper.getEm().find(User.class,"Resident");
+//        System.out.println(user);
+//        Address address = user.getAddressesByAddressId();
+//        System.out.println(address);
+//        ArrayList<Abonent> abonents = (ArrayList<Abonent>) address.getAbonentsesByAddressId();
+//        for (Abonent abonent :abonents) {
+//            System.out.println(abonent.getAbonentAccount());
+//
+//        }
 
 /*-------------- Вытаскивание из базы по первичному ключу.
         User admin = em.find(User.class,"Admin");

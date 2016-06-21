@@ -11,13 +11,13 @@ public class RoleIdConverter implements AttributeConverter<RoleId,String> {
 
     public String convertToDatabaseColumn(RoleId roleId) {
         switch (roleId){
-            case ADMIN:
+            case ADM:
                 return "ADM";
-            case RESIDENT:
+            case RES:
                 return "RES";
-            case HOA_EMP:
+            case HOA:
                 return "HOA";
-            case PROVIDER_EMP:
+            case PROV:
                 return "ADM";
             default:return null;
         }
@@ -25,13 +25,13 @@ public class RoleIdConverter implements AttributeConverter<RoleId,String> {
 
     public RoleId convertToEntityAttribute(String s) {
         if (s.equals("RES")) {
-            return RoleId.RESIDENT;
+            return RoleId.RES;
         } else if (s.equals("HOA")) {
-            return RoleId.HOA_EMP;
+            return RoleId.HOA;
         } else if (s.equals("PROV")) {
-            return RoleId.PROVIDER_EMP;
+            return RoleId.PROV;
         } else if (s.equals("ADM")) {
-            return RoleId.ADMIN;
+            return RoleId.ADM;
         } else {
             return null;
         }

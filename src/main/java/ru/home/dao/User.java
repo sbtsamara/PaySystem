@@ -115,5 +115,15 @@ public class User{
 
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", addressId=" + addressId +
+                ", roleId=" + roleId +
+                ", addressByAddressId=" + addressByAddressId +
+                ", rolesByRoleId=" + rolesByRoleId +
+                '}';
+    }
 }

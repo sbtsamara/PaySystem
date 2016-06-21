@@ -188,4 +188,22 @@ public class Address {
     public void setUsersesByAddressId(Collection<User> usersesByAddressId) {
         this.usersesByAddressId = usersesByAddressId;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", residentCnt=" + residentCnt +
+                ", registeredCnt=" + registeredCnt +
+                ", hoaId=" + hoaId +
+                ", street='" + street + '\'' +
+                ", house=" + house +
+                ", building='" + building + '\'' +
+                ", apartment=" + apartment +
+                ", abonentsesByAddressId=" + abonentsesByAddressId +
+                ", hoasByHoaId=" + hoasByHoaId +
+                ", residentsesByAddressId=" + residentsesByAddressId +
+                ", usersesByAddressId=" + usersesByAddressId +
+                '}';
+    }
 }

@@ -73,4 +73,13 @@ public class Role {
     public void setUsersesByRoleId(Collection<User> usersesByRoleId) {
         this.usersesByRoleId = usersesByRoleId;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", usersesByRoleId=" + usersesByRoleId +
+                '}';
+    }
 }
