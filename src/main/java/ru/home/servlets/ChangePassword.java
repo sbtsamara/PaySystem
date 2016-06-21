@@ -20,23 +20,16 @@ public class ChangePassword extends DispatcherServlet {
         String old = (String) req.getParameter("old_password");
         String newPass = (String) req.getParameter("new_password");
         String confirm = (String) req.getParameter("confirm");
-        PrintWriter out = resp.getWriter();
 
         if (PasswordEncoder.md5Apache(old).equals(user.getUserPassword()) && newPass.equals(confirm) && newPass.length()>=5){
 
             DbHelper.getEm().getTransaction().begin();
             user.setUserPassword(PasswordEncoder.md5Apache(newPass));
             DbHelper.getEm().getTransaction().commit();
-            out.write("<script>alert (\"Пароль изменен\" );</script>");
-            super.forward("/residentPage.jsp",req,resp);
-
-
+            super.forward("/successChangePassword.jsp",req,resp);
         }else{
-            out.write("<script>alert (\"Пароль не верный\" );</script>");
-
+            super.forward("/errorChangePassword.jsp",req,resp);
         }
 
-        out.flush();
-        out.close();
     }
 }

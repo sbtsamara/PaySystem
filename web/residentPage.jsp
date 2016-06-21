@@ -29,5 +29,8 @@
     <form action="changePassword.jsp" method="post">
         <input type="submit" name="change_password" value="Сменить пароль"/>
     </form>
+    <form action="index.jsp" method="post">
+        <input type="submit" name="exit" value="Выйти"/>
+    </form>
 </body>
 </html>
