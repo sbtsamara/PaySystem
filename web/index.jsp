@@ -4,13 +4,21 @@
 
 <html>
 <head>
-  <title>Start page</title>
+    <title>Start page</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <form action="startServlet" method="post">
-      Login:    <input type="text" name="login"/>
-      Password: <input type="password" name="password"/>
-      <input type="submit" name="enter" value="Login In"/>
-    </form>
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" action="startServlet" method="post">
+          <input type="text" name="login" placeholder="username"/>
+          <input type="password" name="password" placeholder="password"/>
+          <input type="submit" class="button" name="enter" value="Login In" />
+        </form>
+    </div>
+</div>
+
+
 </body>
 </html>
