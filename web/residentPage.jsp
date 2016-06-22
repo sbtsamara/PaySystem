@@ -11,22 +11,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <%
-        User user = (User) session.getAttribute("user");
-        Address address = user.getAddressesByAddressId();
-    %>
-<script>
-    function validLogin(){
 
-        alert ( "Please enter mrbool Login Name." );
 
-    }
-</script>
+
 <html>
 <head>
     <title>Resident Page</title>
 </head>
 <body>
+    <%
+        User user = (User) session.getAttribute("user");
+        Address address = user.getAddressesByAddressId();
+    %>
     Здравствуйте, <%=user.getUserId()%>!
     <form action="changePassword.jsp" method="post">
         <input type="submit" name="change_password" value="Сменить пароль"/>
