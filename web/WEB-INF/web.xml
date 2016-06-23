@@ -21,14 +21,16 @@
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-        <!--<servlet-name>paymentsServlet</servlet-name>-->
-        <!--<servlet-class>ru.home.servlets.PaymentsServlet</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>paymentsServlet</servlet-name>-->
-        <!--<url-pattern>/paymentsServlet</url-pattern>-->
-    <!--</servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>pdfServlet</servlet-name>
+        <servlet-class>ru.home.servlets.PdfServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pdfServlet</servlet-name>
+        <url-pattern>/pdfServlet</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>startServlet</servlet-name>
