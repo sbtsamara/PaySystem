@@ -48,7 +48,7 @@
                 <tr>
                     <td>${abonent.abonentId}</td>
                     <td>
-                        <a href="${pageContext.servletContext.contextPath}/abonent.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
+                        <a href="${pageContext.servletContext.contextPath}/charges.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
                     </td>
                 </tr>
             </table>
