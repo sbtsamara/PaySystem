@@ -23,7 +23,7 @@
     <%
         User user = (User) session.getAttribute("user");
         Address address = user.getAddressesByAddressId();
-        pageContext.setAttribute("abonents",address.getAbonentsesByAddressId(),PageContext.PAGE_SCOPE);
+        pageContext.setAttribute("abonents",address.getAbonentsByAddressId(),PageContext.PAGE_SCOPE);
 
     %>
     Здравствуйте, <%=user.getUserId()%>!
@@ -48,7 +48,7 @@
                 <tr>
                     <td>${abonent.abonentId}</td>
                     <td>
-                        <a href="${pageContext.servletContext.contextPath}/payments.jsp?serviceId=${abonent.serviceId}">${abonent.abonentAccount}</a>
+                        <a href="${pageContext.servletContext.contextPath}/abonent.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
                     </td>
                 </tr>
             </table>

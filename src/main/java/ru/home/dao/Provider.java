@@ -78,7 +78,7 @@ public class Provider {
         return result;
     }
 
-    @OneToMany(mappedBy = "providersByProviderId")
+    @OneToMany(mappedBy = "providerByProviderId")
     public Collection<Service> getServicesByProviderId() {
         return servicesByProviderId;
     }
