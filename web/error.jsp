@@ -13,7 +13,7 @@
 <body>
     Неверный логин или пароль
     <form action="index.jsp" method="post">
-        <input type="submit" value="Повторить"/>
+        <input class="submit" type="submit" value="Повторить"/>
     </form>
 </body>
 </html>

@@ -25,43 +25,48 @@
         session.setAttribute("serviceId",request.getParameter("serviceId"));
         session.setAttribute("abonentId",request.getParameter("abonentId"));
     %>
-    Договор номер <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"
-    <h2>Счета на оплату</h2>
-    <table>
-        <tr>
-            <th>Номер счёта на оплату</th>
-            <th>Сумма</th>
-            <th>Начало периода</th>
-            <th>Конец периода</th>
-            <th>Квитанции</th>
+    <div class="top">
+        <div class="topText">
+            Договор номер <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"
+        </div>
+    <form class="exit" action="residentPage.jsp" method="post">
+        <input class="submit" type="submit" value="Назад"/>
+    </form>
+    </div>
 
-        </tr>
-    </table>
-    <c:forEach items="${charges}" var="charge" varStatus="status">
-
+    <div class="body">
+    <h3>Счета на оплату</h3>
+    <div class="formChar">
         <table>
             <tr>
-                <td>${charge.chargeId}</td>
-                <td>${charge.chargeAmount}</td>
-                <td>${charge.periodBeginDate}</td>
-                <td>${charge.periodEndDate}</td>
-                <c:if test="${charge.chargePaid == 'true'}">
-                    <td>
-                        <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Оплачено</a>
-                    </td>
-                </c:if>
-                <c:if test="${charge.chargePaid == 'false'}">
-                    <td>
-                        <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Не оплачено</a>
-                    </td>
-                </c:if>
+                <th>Номер счёта на оплату</th>
+                <th>Сумма</th>
+                <th>Начало периода</th>
+                <th>Конец периода</th>
+                <th>Квитанции</th>
             </tr>
+            <c:forEach items="${charges}" var="charge" varStatus="status">
+                <tr>
+                    <td>${charge.chargeId}</td>
+                    <td>${charge.chargeAmount}</td>
+                    <td>${charge.periodBeginDate}</td>
+                    <td>${charge.periodEndDate}</td>
+                    <c:if test="${charge.chargePaid == 'true'}">
+                        <td>
+                            <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Оплачено</a>
+                        </td>
+                    </c:if>
+                    <c:if test="${charge.chargePaid == 'false'}">
+                        <td>
+                            <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Не оплачено</a>
+                        </td>
+                    </c:if>
+                </tr>
+            </c:forEach>
         </table>
-    </c:forEach>
-    </br>
-    <form class="backButton" action="residentPage.jsp" method="post">
-        <input type="submit" value="Назад"/>
-    </form>
+    </div>
+    </div>
+
 
 </body>
 </html>

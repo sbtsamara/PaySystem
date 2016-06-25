@@ -43,19 +43,32 @@
         pageContext.setAttribute("payments",charge.getPaymentsByChargeId(),PageContext.PAGE_SCOPE);
         Service service = (Service) request.getSession().getAttribute("service");
     %>
-    <p>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%></p>
-    <h3>За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></h3>
+    <div class="top">
 
+
+        <div class="topText">
+            Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%>
+            </br>
+            </br>
+            За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%>
+        </div>
+    <form class="exit" action="/backServlet" method="get">
+        <input class="submit" type="submit" value="Назад"/>
+    </form>
+
+    <div class="body">
+        <h3>Квитанции</h3>
+    <div class="formPayments">
     <table>
+
         <tr>
             <th>Номер квитанции</th>
             <th>Сумма квитанции</th>
             <th>Печать</th>
         </tr>
-    </table>
     <c:forEach items="${payments}" var="payment" varStatus="status">
 
-        <table>
+
             <tr>
                 <td>${payment.paymentId}</td>
                 <td>${payment.paymentAmount}</td>
@@ -64,9 +77,13 @@
                 </td>
 
             </tr>
-        </table>
+
+
     </c:forEach>
-    </br>
+    </table>
+    </div>
+    </div>
+
     <%
         String serviceId = (String) session.getAttribute("serviceId");
         String abonentId = (String) session.getAttribute("abonentId");
@@ -74,8 +91,7 @@
         String s = "/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
         request.getSession().setAttribute("back",s);
     %>
-    <form class="backButton" action="/backServlet" method="get">
-        <input type="submit" value="Назад"/>
-    </form>
+
+
 </body>
 </html>
