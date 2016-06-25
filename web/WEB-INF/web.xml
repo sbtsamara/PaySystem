@@ -31,6 +31,14 @@
         <url-pattern>/pdfServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>backServlet</servlet-name>
+        <servlet-class>ru.home.servlets.BackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>backServlet</servlet-name>
+        <url-pattern>/backServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>startServlet</servlet-name>

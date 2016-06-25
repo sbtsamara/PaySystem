@@ -4,7 +4,8 @@
 <%@ page import="ru.home.dao.Payment" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="ru.home.dao.Service" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="org.hibernate.Session" %><%--
   Created by IntelliJ IDEA.
   User: ivan
   Date: 24.06.16
@@ -42,19 +43,30 @@
         pageContext.setAttribute("payments",charge.getPaymentsByChargeId(),PageContext.PAGE_SCOPE);
         Service service = (Service) request.getSession().getAttribute("service");
     %>
-    <h2>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%>"</h2>
-    <h2>За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></h2>
+    <div class="top">
+        <div class="topText">
+            <p>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%></p>
+            </br>
+            <p>Период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></p>
+        </div>
+        <form class="exit" action="/backServlet" method="get">
+            <input class="submit" type="submit" value="Назад"/>
+        </form>
+    </div>
 
+    <div class="body">
+        <h3>Квитанции</h3>
+    <div class="formPayments">
     <table>
+
         <tr>
             <th>Номер квитанции</th>
             <th>Сумма квитанции</th>
             <th>Печать</th>
         </tr>
-    </table>
     <c:forEach items="${payments}" var="payment" varStatus="status">
 
-        <table>
+
             <tr>
                 <td>${payment.paymentId}</td>
                 <td>${payment.paymentAmount}</td>
@@ -63,10 +75,20 @@
                 </td>
 
             </tr>
-        </table>
-    </c:forEach>
-    </br>
 
+
+    </c:forEach>
+    </table>
+    </div>
+    </div>
+
+    <%
+        String serviceId = (String) session.getAttribute("serviceId");
+        String abonentId = (String) session.getAttribute("abonentId");
+
+        String s = "/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
+        request.getSession().setAttribute("back",s);
+    %>
 
 
 </body>
