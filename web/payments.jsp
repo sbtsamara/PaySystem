@@ -44,17 +44,15 @@
         Service service = (Service) request.getSession().getAttribute("service");
     %>
     <div class="top">
-
-
         <div class="topText">
-            Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%>
+            <p>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%></p>
             </br>
-            </br>
-            За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%>
+            <p>Период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></p>
         </div>
-    <form class="exit" action="/backServlet" method="get">
-        <input class="submit" type="submit" value="Назад"/>
-    </form>
+        <form class="exit" action="/backServlet" method="get">
+            <input class="submit" type="submit" value="Назад"/>
+        </form>
+    </div>
 
     <div class="body">
         <h3>Квитанции</h3>

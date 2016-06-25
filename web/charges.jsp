@@ -27,7 +27,7 @@
     %>
     <div class="top">
         <div class="topText">
-            Договор номер <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"
+            <p>Договор № <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"<p>
         </div>
     <form class="exit" action="residentPage.jsp" method="post">
         <input class="submit" type="submit" value="Назад"/>
