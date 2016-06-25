@@ -22,10 +22,11 @@
         pageContext.setAttribute("charges",abonent.getChargesByAbonentId(),PageContext.PAGE_SCOPE);
         session.setAttribute("abonent",abonent);
         session.setAttribute("service",service);
-
+        session.setAttribute("serviceId",request.getParameter("serviceId"));
+        session.setAttribute("abonentId",request.getParameter("abonentId"));
     %>
     Договор номер <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"
-    <h1>Счета на оплату</h1>
+    <h2>Счета на оплату</h2>
     <table>
         <tr>
             <th>Номер счёта на оплату</th>
@@ -58,7 +59,7 @@
         </table>
     </c:forEach>
     </br>
-    <form action="residentPage.jsp" method="post">
+    <form class="backButton" action="residentPage.jsp" method="post">
         <input type="submit" value="Назад"/>
     </form>
 

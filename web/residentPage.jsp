@@ -26,13 +26,16 @@
         pageContext.setAttribute("abonents",address.getAbonentsByAddressId(),PageContext.PAGE_SCOPE);
 
     %>
-    Здравствуйте, <%=user.getUserId()%>!
-    <form action="changePassword.jsp" method="post">
-        <input type="submit" name="change_password" value="Сменить пароль"/>
-    </form>
-    <form action="index.jsp" method="post">
-        <input type="submit" name="exit" value="Выйти"/>
-    </form>
+    <p>Здравствуйте, <%=user.getUserId()%>!</p>
+
+    <div>
+        <form class="change" action="changePassword.jsp"  method="post">
+            <input class="submit" type="submit" name="change_password" value="Сменить пароль"/>
+        </form>
+        <form class="exit" action="index.jsp" method="post">
+            <input class="submit" type="submit" name="exit" value="Выйти"/>
+        </form>
+    </div>
 
         <h2>Договоры по адресу ул. <%=address.getStreet()%> д. <%=address.getHouse()%> кв. <%=address.getApartment()%></h2>
             <table>
