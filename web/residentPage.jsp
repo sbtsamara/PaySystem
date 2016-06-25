@@ -37,7 +37,7 @@
         </form>
     </div>
 
-        <h2>Договоры по адресу ул. <%=address.getStreet()%> д. <%=address.getHouse()%> кв. <%=address.getApartment()%></h2>
+        <h3 class="h3">Договоры по адресу ул. <%=address.getStreet()%> д. <%=address.getHouse()%> кв. <%=address.getApartment()%></h3>
             <table>
                 <tr>
                     <th>Номер договора</th>

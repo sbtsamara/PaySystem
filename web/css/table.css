@@ -42,7 +42,7 @@ input[type=button], input[type=submit], input[type=reset] {
 td:hover,td:active,td:focus{
     background: #f8e360;
 }
-h2{
+h3{
     font-family: "Roboto", sans-serif;
     text-align: center;
 }

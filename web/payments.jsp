@@ -4,7 +4,8 @@
 <%@ page import="ru.home.dao.Payment" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="ru.home.dao.Service" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="org.hibernate.Session" %><%--
   Created by IntelliJ IDEA.
   User: ivan
   Date: 24.06.16
@@ -42,8 +43,8 @@
         pageContext.setAttribute("payments",charge.getPaymentsByChargeId(),PageContext.PAGE_SCOPE);
         Service service = (Service) request.getSession().getAttribute("service");
     %>
-    <h2>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%>"</h2>
-    <h2>За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></h2>
+    <p>Квитанции на оплату услуги "<%=service.getServiceName()%>" по счету на оплату № <%=charge.getChargeId()%> на сумму $<%=chargeAmount%></p>
+    <h3>За период с <%=dateFormat.format(beginDate.getTime())%> по <%=dateFormat.format(endDate.getTime())%></h3>
 
     <table>
         <tr>
@@ -66,8 +67,15 @@
         </table>
     </c:forEach>
     </br>
+    <%
+        String serviceId = (String) session.getAttribute("serviceId");
+        String abonentId = (String) session.getAttribute("abonentId");
 
-
-
+        String s = "/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
+        request.getSession().setAttribute("back",s);
+    %>
+    <form class="backButton" action="/backServlet" method="get">
+        <input type="submit" value="Назад"/>
+    </form>
 </body>
 </html>
