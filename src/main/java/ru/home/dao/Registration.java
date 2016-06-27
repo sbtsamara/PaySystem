@@ -17,6 +17,16 @@ public class Registration {
     private String regValue;
     private Service serviceByServiceId;
 
+    public Registration(int regId, int serviceId, Date regDate, String regValue) {
+        this.regId = regId;
+        this.serviceId = serviceId;
+        this.regDate = regDate;
+        this.regValue = regValue;
+    }
+
+    public Registration() {
+    }
+
     @Id
     @Column(name = "REG_ID", nullable = false, precision = 0)
     public int getRegId() {
