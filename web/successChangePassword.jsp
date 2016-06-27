@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Пароль успешно изменен!</h1>
-    <form action="residentPage.jsp" method="post">
+    <form action="residents/residentPage.jsp" method="post">
         <input type="submit" name="return" value="Вернуться"/>
     </form>
 </body>

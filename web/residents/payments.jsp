@@ -16,7 +16,7 @@
 <html>
 <head>
     <title>Payments</title>
-    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="../css/table.css">
 </head>
 <body>
     <%
@@ -86,7 +86,7 @@
         String serviceId = (String) session.getAttribute("serviceId");
         String abonentId = (String) session.getAttribute("abonentId");
 
-        String s = "/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
+        String s = "/residents/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
         request.getSession().setAttribute("back",s);
     %>
 
