@@ -9,7 +9,7 @@ import java.util.Collection;
  * Created by Иван on 11.06.2016.
  */
 @Entity
-@Table(name = "SERVICES", schema = "PAYMENT")
+@Table(name = "SERVICES", schema = "PAYMENT", catalog = "")
 //@NamedQuery(name="SERVICES.findAll", query ="SELECT * FROM SERVICES")
 public class Service {
     private int serviceId;
@@ -18,6 +18,7 @@ public class Service {
     private Boolean isMeter;
     private Collection<Abonent> abonentsByServiceId;
     private Provider providerByProviderId;
+    private Collection<Registration> registrationsByServiceId;
 
     public Service() {
     }
@@ -116,5 +117,14 @@ public class Service {
 
     public void setProviderByProviderId(Provider providersByProviderId) {
         this.providerByProviderId = providersByProviderId;
+    }
+
+    @OneToMany(mappedBy = "serviceByServiceId")
+    public Collection<Registration> getRegistrationsByServiceId() {
+        return registrationsByServiceId;
+    }
+
+    public void setRegistrationsByServiceId(Collection<Registration> registrationsByServiceId) {
+        this.registrationsByServiceId = registrationsByServiceId;
     }
 }
