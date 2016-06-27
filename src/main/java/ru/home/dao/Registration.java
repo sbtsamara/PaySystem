@@ -83,7 +83,7 @@ public class Registration {
     }
 
     @ManyToOne
-    @JoinColumn(name = "SERVICE_ID", referencedColumnName = "SERVICE_ID", nullable = false)
+    @JoinColumn(name = "SERVICE_ID", referencedColumnName = "SERVICE_ID", nullable = false, insertable=false, updatable=false)
     public Service getServiceByServiceId() {
         return serviceByServiceId;
     }

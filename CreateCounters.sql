@@ -10,15 +10,15 @@ pctfree 10
 initrans 1
 maxtrans 255;
 comment on table PAYMENT.REGISTRATIONS
-is 'Показания счетчиков';
+is 'РџРѕРєР°Р·Р°РЅРёСЏ СЃС‡РµС‚С‡РёРєРѕРІ';
 comment on column PAYMENT.REGISTRATIONS.REG_ID
-is 'ID показания';
+is 'ID РїРѕРєР°Р·Р°РЅРёСЏ';
 comment on column PAYMENT.REGISTRATIONS.REG_DATE
-is 'Дата замера';
+is 'Р”Р°С‚Р° Р·Р°РјРµСЂР°';
 comment on column PAYMENT.REGISTRATIONS.REG_VALUE
-is 'Значение';
+is 'Р—РЅР°С‡РµРЅРёРµ';
 comment on column PAYMENT.REGISTRATIONS.SERVICE_ID
-is 'ID услуги';
+is 'ID СѓСЃР»СѓРіРё';
 alter table PAYMENT.REGISTRATIONS
 add constraint PK_REGISTRATIONS_REG_ID primary key (REG_ID)
 using index 
