@@ -37,7 +37,7 @@ public class StartServlet extends DispatcherServlet {
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
                 //перенаправление на кабинет для соответствующей роли.
-                if (user.getRoleId().equals("RES")) super.forward("/residentPage.jsp",req,resp);
+                if (user.getRoleId().equals("RES")) super.forward("/residents/residentPage.jsp",req,resp);
 //СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
                 super.forward("/error.jsp",req,resp);
