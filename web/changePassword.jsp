@@ -24,7 +24,7 @@
             <input type="password" name="confirm" placeholder="Подтверждение"/></br>
             <input class="button" type="submit" name="ok" value="ОК"/>
         </form>
-        <form action="residents/residentPage.jsp" method="post">
+        <form action="residentPage.jsp" method="post">
             <input class="button" type="submit" name="cancel" value="Отмена"/>
         </form>
     </div>

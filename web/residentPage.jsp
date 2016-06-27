@@ -16,7 +16,7 @@
 <html>
 <head>
     <title>Resident Page</title>
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="css/table.css">
 
 </head>
 <body>
@@ -32,10 +32,10 @@
         <div class="topText">
             <p>Здравствуйте, <%=user.getUserId()%>!</p>
         </div>
-        <form class="change" action="../changePassword.jsp" method="post">
+        <form class="change" action="changePassword.jsp" method="post">
             <input class="submit" type="submit" name="change_password" value="Сменить пароль"/>
         </form>
-        <form class="exit" action="../index.jsp" method="post">
+        <form class="exit" action="index.jsp" method="post">
             <input class="submit" type="submit" name="exit" value="Выйти"/>
         </form>
     </div>
@@ -54,7 +54,7 @@
                 <tr>
                     <td>${abonent.abonentId}</td>
                     <td>
-                        <a href="${pageContext.servletContext.contextPath}/residents/charges.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
+                        <a href="${pageContext.servletContext.contextPath}/charges.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
                     </td>
                 </tr>
             </c:forEach>

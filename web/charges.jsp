@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>Charges</title>
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
     <%
@@ -29,7 +29,12 @@
         <div class="topText">
             <p>Договор № <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"<p>
         </div>
-    <form class="exit" action="residents/residentPage.jsp" method="post">
+        <%if(service.getIsMeter()){%>
+        <form class="change" action="changePassword.jsp"  method="post">
+            <input class="submit" type="submit" name="change_password" value="Ввести показания счетчика"/>
+        </form>
+        <%}%>
+    <form class="exit" action="residentPage.jsp" method="post">
         <input class="submit" type="submit" value="Назад"/>
     </form>
     </div>
@@ -53,12 +58,12 @@
                     <td>${charge.periodEndDate}</td>
                     <c:if test="${charge.chargePaid == 'true'}">
                         <td>
-                            <a href="${pageContext.servletContext.contextPath}/residents/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Оплачено</a>
+                            <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Оплачено</a>
                         </td>
                     </c:if>
                     <c:if test="${charge.chargePaid == 'false'}">
                         <td>
-                            <a href="${pageContext.servletContext.contextPath}/residents/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Не оплачено</a>
+                            <a href="${pageContext.servletContext.contextPath}/payments.jsp?chargeId=${charge.chargeId}&chargeAmount=${charge.chargeAmount}&periodBeginDate=${charge.periodBeginDate}&periodEndDate=${charge.periodEndDate}">Не оплачено</a>
                         </td>
                     </c:if>
                 </tr>
