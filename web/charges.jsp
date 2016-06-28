@@ -16,7 +16,6 @@
 </head>
 <body>
     <%
-
         Service service = DbHelper.getEm().find(Service.class,Integer.parseInt(request.getParameter("serviceId")));
         Abonent abonent = DbHelper.getEm().find(Abonent.class,Integer.parseInt(request.getParameter("abonentId")));
         pageContext.setAttribute("charges",abonent.getChargesByAbonentId(),PageContext.PAGE_SCOPE);
@@ -30,7 +29,7 @@
             <p>Договор № <%=abonent.getAbonentId()%> на предоставление услуги "<%=service.getServiceName()%>"<p>
         </div>
         <%if(service.getIsMeter()){%>
-        <form class="change" action="changePassword.jsp"  method="post">
+        <form class="change" action="/registerCounterServlet"  method="get">
             <input class="submit" type="submit" name="change_password" value="Ввести показания счетчика"/>
         </form>
         <%}%>
