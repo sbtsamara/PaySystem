@@ -21,7 +21,7 @@
     <%pageContext.setAttribute("registrations",registrations,PageContext.PAGE_SCOPE);%>
     <div class="top">
         <div class="topText">
-            <p>Ввод показаний счетчика по услуге <%=service.getServiceName()%></p>
+            <p>Ввод показаний счетчика по услуге "<%=service.getServiceName()%>"</p>
         </div>
 
         <form class="exit" action="/backServlet" method="get">
@@ -30,17 +30,26 @@
     </div>
 
     <div class="body">
+        <form action="/addRegServlet" method="get">
+            <input type="text" name="value"/>
+            <input type="date" name="date" value="21.01.2016">
+            <input type="submit" value="Добавить"/>
+            <%String checker = (String) session.getAttribute("checker");
+            if (checker!=null && checker.equals("false")){%>
+            <p>Заполните все поля!!!</p>
+            <%}else {%>
+            </br>
+            <%}%>
+        </form>
         <h3>Показания счетчика</h3>
-        <div class="formPayments">
+        <div class="formReg">
             <table>
                 <tr>
-                    <th>Номер показания</th>
                     <th>Дата сдачи</th>
                     <th>Значение</th>
                 </tr>
                 <c:forEach items="${registrations}" var="registration" varStatus="status">
                     <tr>
-                        <td>${registration.regId}</td>
                         <td>${registration.regDate}</td>
                         <td>${registration.regValue}</td>
                     </tr>
@@ -48,5 +57,13 @@
             </table>
         </div>
     </div>
+
+    <%
+        String serviceId = (String) session.getAttribute("serviceId");
+        String abonentId = (String) session.getAttribute("abonentId");
+
+        String s = "/charges.jsp?serviceId="+serviceId+"&abonentId="+abonentId;
+        request.getSession().setAttribute("back",s);
+    %>
 </body>
 </html>
