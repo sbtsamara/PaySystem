@@ -32,14 +32,17 @@ public class StartServlet extends DispatcherServlet {
             session.setAttribute("passwordAttribute",password);
 
             User user = DbHelper.getEm().find(User.class,login);
-
+//            String loginMarker = "true";
             //Проверка пароля
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
+//                loginMarker = "true";
                 //перенаправление на кабинет для соответствующей роли.
                 if (user.getRoleId().equals("RES")) super.forward("/residentPage.jsp",req,resp);
 //СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
+//                loginMarker = "false";
+//                session.setAttribute("loginMarker",loginMarker);
                 super.forward("/error.jsp",req,resp);
             }
         }

@@ -1,7 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="ru.home.dao.Registration" %>
-<%@ page import="ru.home.dao.Service" %><%--
+<%@ page import="ru.home.dao.Service" %>
+<%@ page import="ru.home.utils.DbHelper" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="javafx.scene.input.DataFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: ivan
   Date: 28.06.16
@@ -30,17 +34,22 @@
     </div>
 
     <div class="body">
-        <form action="/addRegServlet" method="get">
-            <input type="text" name="value"/>
-            <input type="date" name="date" value="21.01.2016">
-            <input type="submit" value="Добавить"/>
-            <%String checker = (String) session.getAttribute("checker");
+        <div class="formAdd">
+            <form action="/addRegServlet" method="get">
+                <input class="textBox" type="text" name="value" placeholder="Показание счетчика"/>
+                <input class="textBox" type="date" name="date"/>
+                <div class="add"><input class="submit" type="submit" value="Добавить"/></div>
+            </form>
+        </div>
+        <%String checker = (String) session.getAttribute("checker");
             if (checker!=null && checker.equals("false")){%>
+        <div class="middleText">
             <p>Заполните все поля!!!</p>
-            <%}else {%>
-            </br>
-            <%}%>
-        </form>
+        </div>
+
+        <%}else {%>
+        </br>
+        <%}%>
         <h3>Показания счетчика</h3>
         <div class="formReg">
             <table>

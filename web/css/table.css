@@ -58,6 +58,22 @@ table {
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+.formAdd {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 460px;
+    margin: 0 auto 0px;
+    padding: 1px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.middleText{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #ff1313;
+}
 .formChar {
     position: relative;
     z-index: 1;
@@ -72,7 +88,7 @@ table {
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    max-width: 400px;
+    max-width: 330px;
     margin: 0 auto 100px;
     padding: 0px;
     border-radius: 10px;
@@ -107,7 +123,16 @@ th {
     right: 6px;
     cursor: pointer;
 }
-
+.add  {
+    position: absolute;
+    top:3px;
+    right: 5px;
+    cursor: pointer;
+}
+.textBox{
+    width:168px;
+    height: 30px;
+}
 
 input[type=button], input[type=submit], input[type=reset] {
     display: inline-block;
