@@ -32,7 +32,6 @@ public class StartServlet extends DispatcherServlet {
             session.setAttribute("passwordAttribute",password);
 
             User user = DbHelper.getEm().find(User.class,login);
-
             //Проверка пароля
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
