@@ -49,6 +49,22 @@
         <url-pattern>/startServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>registerCounterServlet</servlet-name>
+        <servlet-class>ru.home.servlets.RegisterCounterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerCounterServlet</servlet-name>
+        <url-pattern>/registerCounterServlet</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addRegServlet</servlet-name>
+        <servlet-class>ru.home.servlets.AddRegServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addRegServlet</servlet-name>
+        <url-pattern>/addRegServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>
