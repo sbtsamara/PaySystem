@@ -24,7 +24,8 @@
         User user = (User) session.getAttribute("user");
         Address address = user.getAddressesByAddressId();
         pageContext.setAttribute("abonents",address.getAbonentsByAddressId(),PageContext.PAGE_SCOPE);
-
+        ArrayList<Abonent> arrayList = new ArrayList(address.getAbonentsByAddressId());
+        int counter = 0;
     %>
 
 
@@ -47,14 +48,14 @@
                 <tr>
                     <th>Номер договора</th>
                     <th>Лицевой счёт</th>
-
+                    <th>Название услуги</th>
                 </tr>
-
             <c:forEach items="${abonents}" var="abonent" varStatus="status">
                 <tr>
                     <td>${abonent.abonentId}</td>
+                    <td>${abonent.abonentAccount}</td>
                     <td>
-                        <a href="${pageContext.servletContext.contextPath}/charges.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}">${abonent.abonentAccount}</a>
+                        <a href="${pageContext.servletContext.contextPath}/charges.jsp?serviceId=${abonent.serviceId}&abonentId=${abonent.abonentId}"><%=arrayList.get(counter++).getServiceByServiceId().getServiceName()%></a>
                     </td>
                 </tr>
             </c:forEach>
