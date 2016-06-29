@@ -1,5 +1,8 @@
 package ru.home.dao;
 
+
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -25,8 +28,18 @@ public class Provider {
         this.providerAddress = providerAddress;
     }
 
+
+    public Provider(String providerName, String providerAddress)
+    {
+        this.providerId = new Provider().getProviderId();
+        this.providerName = providerName;
+        this.providerAddress = providerAddress;
+    }
+
     @Id
-    @Column(name = "PROVIDER_ID", nullable = false, precision = 0)
+    @GenericGenerator(name = "nextval", strategy = "increment")
+    @GeneratedValue(generator = "nextval")
+    @Column(name = "PROVIDER_ID", nullable = false, unique = true/*, precision = 0 */)
     public int getProviderId() {
         return providerId;
     }
@@ -78,7 +91,7 @@ public class Provider {
         return result;
     }
 
-    @OneToMany(mappedBy = "providerByProviderId")
+    @OneToMany(mappedBy = "providersByProviderId")
     public Collection<Service> getServicesByProviderId() {
         return servicesByProviderId;
     }
@@ -86,4 +99,6 @@ public class Provider {
     public void setServicesByProviderId(Collection<Service> servicesByProviderId) {
         this.servicesByProviderId = servicesByProviderId;
     }
+
+
 }

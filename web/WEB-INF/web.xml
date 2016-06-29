@@ -21,25 +21,6 @@
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
 
-
-    <servlet>
-        <servlet-name>pdfServlet</servlet-name>
-        <servlet-class>ru.home.servlets.PdfServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>pdfServlet</servlet-name>
-        <url-pattern>/pdfServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>backServlet</servlet-name>
-        <servlet-class>ru.home.servlets.BackServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>backServlet</servlet-name>
-        <url-pattern>/backServlet</url-pattern>
-    </servlet-mapping>
-
     <servlet>
         <servlet-name>startServlet</servlet-name>
         <servlet-class>ru.home.servlets.StartServlet</servlet-class>
@@ -48,23 +29,23 @@
         <servlet-name>startServlet</servlet-name>
         <url-pattern>/startServlet</url-pattern>
     </servlet-mapping>
-
+    <!--Перенаправление на страницу справочника поставщиков-->
     <servlet>
-        <servlet-name>registerCounterServlet</servlet-name>
-        <servlet-class>ru.home.servlets.RegisterCounterServlet</servlet-class>
+        <servlet-name>directoryProviderServlet</servlet-name>
+        <servlet-class>ru.home.servlets.directoryProviderServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>registerCounterServlet</servlet-name>
-        <url-pattern>/registerCounterServlet</url-pattern>
+        <servlet-name>directoryProviderServlet</servlet-name>
+        <url-pattern>/directoryProviderServlet</url-pattern>
     </servlet-mapping>
-
+    <!--Редактирование поставщика-->
     <servlet>
-        <servlet-name>addRegServlet</servlet-name>
-        <servlet-class>ru.home.servlets.AddRegServlet</servlet-class>
+        <servlet-name>editProviderServlet</servlet-name>
+        <servlet-class>ru.home.servlets.editProviderServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>addRegServlet</servlet-name>
-        <url-pattern>/addRegServlet</url-pattern>
+        <servlet-name>editProviderServlet</servlet-name>
+        <url-pattern>/editProviderServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

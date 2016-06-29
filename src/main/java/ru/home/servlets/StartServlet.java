@@ -20,7 +20,6 @@ public class StartServlet extends DispatcherServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-
         //проверка нажатия кнопки логин
         if (req.getParameter("enter")!=null){
             HttpSession session = req.getSession();
@@ -32,11 +31,13 @@ public class StartServlet extends DispatcherServlet {
             session.setAttribute("passwordAttribute",password);
 
             User user = DbHelper.getEm().find(User.class,login);
+
             //Проверка пароля
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);
                 //перенаправление на кабинет для соответствующей роли.
                 if (user.getRoleId().equals("RES")) super.forward("/residentPage.jsp",req,resp);
+                if (user.getRoleId().equals("ADM")) super.forward("/adminPage.jsp",req,resp);
 //СЮДА ДОБАВЛЯТЬ СВОЁ ПЕРЕНАПРАВЛЕНИЕ
             }else {
                 super.forward("/error.jsp",req,resp);

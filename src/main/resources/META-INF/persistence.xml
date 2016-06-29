@@ -11,7 +11,6 @@
         <class>ru.home.dao.Resident</class>
         <class>ru.home.dao.Role</class>
         <class>ru.home.dao.Service</class>
-        <class>ru.home.dao.Registration</class>
         <class>ru.home.dao.User</class>
 
         <properties>
