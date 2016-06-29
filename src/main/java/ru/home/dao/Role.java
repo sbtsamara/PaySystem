@@ -12,7 +12,7 @@ import java.util.Collection;
 public class Role {
     private String roleId;
     private String roleName;
-    private Collection<User> usersByRoleId;
+    private Collection<User> usersesByRoleId;
 
     public Role(String roleId, String roleName) {
         this.roleId = roleId;
@@ -62,13 +62,13 @@ public class Role {
         return result;
     }
 
-    @OneToMany(mappedBy = "roleByRoleId")
-    public Collection<User> getUsersByRoleId() {
-        return usersByRoleId;
+    @OneToMany(mappedBy = "rolesByRoleId")
+    public Collection<User> getUsersesByRoleId() {
+        return usersesByRoleId;
     }
 
-    public void setUsersByRoleId(Collection<User> usersesByRoleId) {
-        this.usersByRoleId = usersesByRoleId;
+    public void setUsersesByRoleId(Collection<User> usersesByRoleId) {
+        this.usersesByRoleId = usersesByRoleId;
     }
 
 

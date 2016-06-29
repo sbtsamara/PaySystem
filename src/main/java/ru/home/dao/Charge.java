@@ -3,6 +3,7 @@ package ru.home.dao;
 import ru.home.utils.BooleanConverter;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Collection;
 import java.util.Date;
 
@@ -20,8 +21,8 @@ public class Charge {
     private Date periodBeginDate;
     private Date periodEndDate;
     private Boolean chargePaid;
-    private Abonent abonentByAbonentId;
-    private Collection<Payment> paymentsByChargeId;
+    private Abonent abonentsByAbonentId;
+    private Collection<Payment> paymentsesByChargeId;
 
     public Charge() {
     }
@@ -112,9 +113,9 @@ public class Charge {
         if (periodEndDate != null ? !periodEndDate.equals(charge.periodEndDate) : charge.periodEndDate != null)
             return false;
         if (chargePaid != null ? !chargePaid.equals(charge.chargePaid) : charge.chargePaid != null) return false;
-        if (abonentByAbonentId != null ? !abonentByAbonentId.equals(charge.abonentByAbonentId) : charge.abonentByAbonentId != null)
+        if (abonentsByAbonentId != null ? !abonentsByAbonentId.equals(charge.abonentsByAbonentId) : charge.abonentsByAbonentId != null)
             return false;
-        return paymentsByChargeId != null ? paymentsByChargeId.equals(charge.paymentsByChargeId) : charge.paymentsByChargeId == null;
+        return paymentsesByChargeId != null ? paymentsesByChargeId.equals(charge.paymentsesByChargeId) : charge.paymentsesByChargeId == null;
 
     }
 
@@ -126,27 +127,27 @@ public class Charge {
         result = 31 * result + (periodBeginDate != null ? periodBeginDate.hashCode() : 0);
         result = 31 * result + (periodEndDate != null ? periodEndDate.hashCode() : 0);
         result = 31 * result + (chargePaid != null ? chargePaid.hashCode() : 0);
-        result = 31 * result + (abonentByAbonentId != null ? abonentByAbonentId.hashCode() : 0);
-        result = 31 * result + (paymentsByChargeId != null ? paymentsByChargeId.hashCode() : 0);
+        result = 31 * result + (abonentsByAbonentId != null ? abonentsByAbonentId.hashCode() : 0);
+        result = 31 * result + (paymentsesByChargeId != null ? paymentsesByChargeId.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
     @JoinColumn(name = "ABONENT_ID", referencedColumnName = "ABONENT_ID", insertable = false, updatable = false)
-    public Abonent getAbonentByAbonentId() {
-        return abonentByAbonentId;
+    public Abonent getAbonentsByAbonentId() {
+        return abonentsByAbonentId;
     }
 
-    public void setAbonentByAbonentId(Abonent abonentsByAbonentId) {
-        this.abonentByAbonentId = abonentsByAbonentId;
+    public void setAbonentsByAbonentId(Abonent abonentsByAbonentId) {
+        this.abonentsByAbonentId = abonentsByAbonentId;
     }
 
-    @OneToMany(mappedBy = "chargeByChargeId")
-    public Collection<Payment> getPaymentsByChargeId() {
-        return paymentsByChargeId;
+    @OneToMany(mappedBy = "chargesByChargeId")
+    public Collection<Payment> getPaymentsesByChargeId() {
+        return paymentsesByChargeId;
     }
 
-    public void setPaymentsByChargeId(Collection<Payment> paymentsesByChargeId) {
-        this.paymentsByChargeId = paymentsesByChargeId;
+    public void setPaymentsesByChargeId(Collection<Payment> paymentsesByChargeId) {
+        this.paymentsesByChargeId = paymentsesByChargeId;
     }
 }

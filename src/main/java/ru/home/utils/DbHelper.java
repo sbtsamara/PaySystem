@@ -5,6 +5,7 @@ import ru.home.appMain.AppMain;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.beans.Statement;
 import java.util.Locale;
 
 /**
@@ -14,8 +15,8 @@ public class DbHelper {
     static {
         Locale.setDefault(Locale.ENGLISH);
     }
-    private static final EntityManager em = Persistence.createEntityManagerFactory("NewPersistenceUnit").createEntityManager();
-
+    private static final EntityManager em = Persistence.createEntityManagerFactory(
+                "NewPersistenceUnit").createEntityManager();
 
     //получает первый свободный id. Коммитить после каждого вызова, иначе вернёт неактуальный id.
     public static Integer getNewId(Class clazz){
@@ -23,8 +24,6 @@ public class DbHelper {
 
         return q.getResultList().size()+1;
     }
-
-
 
     public static EntityManager getEm(){
         return em;

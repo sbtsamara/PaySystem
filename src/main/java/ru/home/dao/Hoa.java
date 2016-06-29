@@ -1,5 +1,8 @@
 package ru.home.dao;
 
+import ru.home.appMain.AppMain;
+import ru.home.utils.DbHelper;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -104,7 +107,7 @@ public class Hoa {
         return result;
     }
 
-    @OneToMany(mappedBy = "hoaByHoaId")
+    @OneToMany(mappedBy = "hoasByHoaId")
     public Collection<Address> getAddressesByHoaId() {
         return addressesByHoaId;
     }

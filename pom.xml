@@ -14,18 +14,24 @@
     </properties>
 
     <dependencies>
+        <!-- glassfish -->
+        <dependency>
+            <groupId>org.glassfish.maven.plugin</groupId>
+            <artifactId>maven-glassfish-plugin</artifactId>
+            <version>2.1</version>
+        </dependency>
         <!-- iText for PDF -->
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.0.6</version>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
         </dependency>
         <!--driver for connection to oracle database -->
         <dependency>
-        <groupId>com.oracle</groupId>
-<!--нужно скачать ojdbc7 12.1.0 и добавить в локальный репозиторий maven -->
+            <groupId>com.oracle</groupId>
+            <!--нужно скачать ojdbc7 12.1.0 и добавить в локальный репозиторий maven -->
             <artifactId>ojdbc7</artifactId>
-        <version>12.1.0</version>
+            <version>12.1.0.1</version>
         </dependency>
 
         <dependency>
@@ -38,17 +44,14 @@
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
         </dependency>
+        <!-- standard.jar  Для подключение jstl -->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.1</version>
-            <scope>compile</scope>
-        </dependency>
+        <!-- standard.jar  Для подключение jstl End.-->
+
         <!-- Apache Common Codec -->
         <dependency>
             <groupId>commons-codec</groupId>
@@ -111,6 +114,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>

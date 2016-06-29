@@ -12,18 +12,17 @@
         <class>ru.home.dao.Role</class>
         <class>ru.home.dao.Service</class>
         <class>ru.home.dao.User</class>
-        <class>ru.home.dao.Registration</class>
 
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/oracle"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
 
-            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.username" value="payment"/>
 
-            <property name="hibernate.connection.password"/>
+            <property name="hibernate.connection.password" value="payment"/>
 
             <property name="hibernate.connection.autocommit" value="false"/>
 

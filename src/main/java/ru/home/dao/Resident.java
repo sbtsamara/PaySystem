@@ -13,7 +13,7 @@ public class Resident {
     private int addressId;
     private String residentName;
     private int mainOwner;
-    private Address addressByAddressId;
+    private Address addressesByAddressId;
 
     public Resident() {
     }
@@ -92,11 +92,11 @@ public class Resident {
 
     @ManyToOne
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID", nullable = false, insertable = false, updatable = false)
-    public Address getAddressByAddressId() {
-        return addressByAddressId;
+    public Address getAddressesByAddressId() {
+        return addressesByAddressId;
     }
 
-    public void setAddressByAddressId(Address addressesByAddressId) {
-        this.addressByAddressId = addressesByAddressId;
+    public void setAddressesByAddressId(Address addressesByAddressId) {
+        this.addressesByAddressId = addressesByAddressId;
     }
 }
