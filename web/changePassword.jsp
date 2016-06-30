@@ -1,4 +1,4 @@
-<%--
+<%@ page import="ru.home.dao.User" %><%--
   Created by IntelliJ IDEA.
   User: ivan
   Date: 20.06.16
@@ -23,9 +23,17 @@
             <input type="password" name="confirm" placeholder="Подтверждение"/></br>
             <input class="button" type="submit" name="ok" value="ОК"/>
         </form>
+        <%User user = (User) session.getAttribute("user");
+            if (user.getRoleId().equals("RES")){%>
         <form action="residentPage.jsp" method="post">
             <input class="button" type="submit" name="cancel" value="Отмена"/>
         </form>
+        <%}%>
+        <%if (user.getRoleId().equals("ADM")){%>
+        <form action="adminPage.jsp" method="post">
+            <input class="button" type="submit" name="cancel" value="Отмена"/>
+        </form>
+        <%}%>
     </div>
 </div>
 </body>
