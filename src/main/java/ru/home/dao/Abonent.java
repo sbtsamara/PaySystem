@@ -14,8 +14,8 @@ public class Abonent {
     private int serviceId;
     private int abonentAccount;
     private int addressId;
-    private Service servicesByServiceId;
-    private Address addressesByAddressId;
+    private Service serviceByServiceId;
+    private Address addressByAddressId;
     private Collection<Charge> chargesByAbonentId;
 
     public Abonent(int abonentId, int serviceId, int abonentAccount, int addressId) {
@@ -94,25 +94,25 @@ public class Abonent {
 
     @ManyToOne
     @JoinColumn(name = "SERVICE_ID", referencedColumnName = "SERVICE_ID", nullable = false, insertable = false, updatable = false)
-    public Service getServicesByServiceId() {
-        return servicesByServiceId;
+    public Service getServiceByServiceId() {
+        return serviceByServiceId;
     }
 
-    public void setServicesByServiceId(Service servicesByServiceId) {
-        this.servicesByServiceId = servicesByServiceId;
+    public void setServiceByServiceId(Service servicesByServiceId) {
+        this.serviceByServiceId = servicesByServiceId;
     }
 
     @ManyToOne
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID", nullable = false, insertable = false, updatable = false)
-    public Address getAddressesByAddressId() {
-        return addressesByAddressId;
+    public Address getAddressByAddressId() {
+        return addressByAddressId;
     }
 
-    public void setAddressesByAddressId(Address addressesByAddressId) {
-        this.addressesByAddressId = addressesByAddressId;
+    public void setAddressByAddressId(Address addressesByAddressId) {
+        this.addressByAddressId = addressesByAddressId;
     }
 
-    @OneToMany(mappedBy = "abonentsByAbonentId")
+    @OneToMany(mappedBy = "abonentByAbonentId")
     public Collection<Charge> getChargesByAbonentId() {
         return chargesByAbonentId;
     }

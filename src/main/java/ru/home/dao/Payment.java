@@ -12,7 +12,7 @@ public class Payment {
     private int paymentId;
     private int chargeId;
     private int paymentAmount;
-    private Charge chargesByChargeId;
+    private Charge chargeByChargeId;
 
     public Payment() {
     }
@@ -78,11 +78,11 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "CHARGE_ID", referencedColumnName = "CHARGE_ID", insertable = false, updatable = false)
-    public Charge getChargesByChargeId() {
-        return chargesByChargeId;
+    public Charge getChargeByChargeId() {
+        return chargeByChargeId;
     }
 
-    public void setChargesByChargeId(Charge chargesByChargeId) {
-        this.chargesByChargeId = chargesByChargeId;
+    public void setChargeByChargeId(Charge chargesByChargeId) {
+        this.chargeByChargeId = chargesByChargeId;
     }
 }

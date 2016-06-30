@@ -9,15 +9,16 @@ import java.util.Collection;
  * Created by Иван on 11.06.2016.
  */
 @Entity
-@Table(name = "SERVICES", schema = "PAYMENT")
+@Table(name = "SERVICES", schema = "PAYMENT", catalog = "")
 //@NamedQuery(name="SERVICES.findAll", query ="SELECT * FROM SERVICES")
 public class Service {
     private int serviceId;
     private String serviceName;
     private int providerId;
     private Boolean isMeter;
-    private Collection<Abonent> abonentsesByServiceId;
-    private Provider providersByProviderId;
+    private Collection<Abonent> abonentsByServiceId;
+    private Provider providerByProviderId;
+    private Collection<Registration> registrationsByServiceId;
 
     public Service() {
     }
@@ -82,9 +83,9 @@ public class Service {
         if (providerId != service.providerId) return false;
         if (isMeter != service.isMeter) return false;
         if (serviceName != null ? !serviceName.equals(service.serviceName) : service.serviceName != null) return false;
-        if (abonentsesByServiceId != null ? !abonentsesByServiceId.equals(service.abonentsesByServiceId) : service.abonentsesByServiceId != null)
+        if (abonentsByServiceId != null ? !abonentsByServiceId.equals(service.abonentsByServiceId) : service.abonentsByServiceId != null)
             return false;
-        return providersByProviderId != null ? providersByProviderId.equals(service.providersByProviderId) : service.providersByProviderId == null;
+        return providerByProviderId != null ? providerByProviderId.equals(service.providerByProviderId) : service.providerByProviderId == null;
 
     }
 
@@ -94,27 +95,36 @@ public class Service {
         result = 31 * result + (serviceName != null ? serviceName.hashCode() : 0);
         result = 31 * result + providerId;
         result = 31 * result + (isMeter ? 1 : 0);
-        result = 31 * result + (abonentsesByServiceId != null ? abonentsesByServiceId.hashCode() : 0);
-        result = 31 * result + (providersByProviderId != null ? providersByProviderId.hashCode() : 0);
+        result = 31 * result + (abonentsByServiceId != null ? abonentsByServiceId.hashCode() : 0);
+        result = 31 * result + (providerByProviderId != null ? providerByProviderId.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "servicesByServiceId")
-    public Collection<Abonent> getAbonentsesByServiceId() {
-        return abonentsesByServiceId;
+    @OneToMany(mappedBy = "serviceByServiceId")
+    public Collection<Abonent> getAbonentsByServiceId() {
+        return abonentsByServiceId;
     }
 
-    public void setAbonentsesByServiceId(Collection<Abonent> abonentsesByServiceId) {
-        this.abonentsesByServiceId = abonentsesByServiceId;
+    public void setAbonentsByServiceId(Collection<Abonent> abonentsesByServiceId) {
+        this.abonentsByServiceId = abonentsesByServiceId;
     }
 
     @ManyToOne
     @JoinColumn(name = "PROVIDER_ID", referencedColumnName = "PROVIDER_ID", nullable = false, insertable = false, updatable = false)
-    public Provider getProvidersByProviderId() {
-        return providersByProviderId;
+    public Provider getProviderByProviderId() {
+        return providerByProviderId;
     }
 
-    public void setProvidersByProviderId(Provider providersByProviderId) {
-        this.providersByProviderId = providersByProviderId;
+    public void setProviderByProviderId(Provider providersByProviderId) {
+        this.providerByProviderId = providersByProviderId;
+    }
+
+    @OneToMany(mappedBy = "serviceByServiceId")
+    public Collection<Registration> getRegistrationsByServiceId() {
+        return registrationsByServiceId;
+    }
+
+    public void setRegistrationsByServiceId(Collection<Registration> registrationsByServiceId) {
+        this.registrationsByServiceId = registrationsByServiceId;
     }
 }

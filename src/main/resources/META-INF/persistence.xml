@@ -11,10 +11,11 @@
         <class>ru.home.dao.Resident</class>
         <class>ru.home.dao.Role</class>
         <class>ru.home.dao.Service</class>
+        <class>ru.home.dao.Registration</class>
         <class>ru.home.dao.User</class>
 
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/XE"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:1521/oracle"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
 

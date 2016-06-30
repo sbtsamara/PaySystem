@@ -20,6 +20,7 @@ public class StartServlet extends DispatcherServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
+
         //проверка нажатия кнопки логин
         if (req.getParameter("enter")!=null){
             HttpSession session = req.getSession();
@@ -31,7 +32,6 @@ public class StartServlet extends DispatcherServlet {
             session.setAttribute("passwordAttribute",password);
 
             User user = DbHelper.getEm().find(User.class,login);
-
             //Проверка пароля
             if (user!=null && PasswordEncoder.stringVsMd5(password,user.getUserPassword())){
                 session.setAttribute("user",user);

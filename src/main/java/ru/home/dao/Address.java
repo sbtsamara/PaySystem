@@ -1,8 +1,5 @@
 package ru.home.dao;
 
-import ru.home.appMain.AppMain;
-import ru.home.utils.DbHelper;
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -21,10 +18,10 @@ public class Address {
     private int house;
     private String building;
     private int apartment;
-    private Collection<Abonent> abonentsesByAddressId;
-    private Hoa hoasByHoaId;
-    private Collection<Resident> residentsesByAddressId;
-    private Collection<User> usersesByAddressId;
+    private Collection<Abonent> abonentsByAddressId;
+    private Hoa hoaByHoaId;
+    private Collection<Resident> residentsByAddressId;
+    private Collection<User> usersByAddressId;
 
     public Address(int addressId, int residentCnt, int registeredCnt, int hoaId, String street, int house, String building, int apartment) {
         this.addressId = addressId;
@@ -152,41 +149,41 @@ public class Address {
         return result;
     }
 
-    @OneToMany(mappedBy = "addressesByAddressId")
-    public Collection<Abonent> getAbonentsesByAddressId() {
-        return abonentsesByAddressId;
+    @OneToMany(mappedBy = "addressByAddressId")
+    public Collection<Abonent> getAbonentsByAddressId() {
+        return abonentsByAddressId;
     }
 
-    public void setAbonentsesByAddressId(Collection<Abonent> abonentsesByAddressId) {
-        this.abonentsesByAddressId = abonentsesByAddressId;
+    public void setAbonentsByAddressId(Collection<Abonent> abonentsesByAddressId) {
+        this.abonentsByAddressId = abonentsesByAddressId;
     }
 
     @ManyToOne
     @JoinColumn(name = "HOA_ID", referencedColumnName = "HOA_ID", nullable = false, insertable = false, updatable = false)
-    public Hoa getHoasByHoaId() {
-        return hoasByHoaId;
+    public Hoa getHoaByHoaId() {
+        return hoaByHoaId;
     }
 
-    public void setHoasByHoaId(Hoa hoasByHoaId) {
-        this.hoasByHoaId = hoasByHoaId;
+    public void setHoaByHoaId(Hoa hoasByHoaId) {
+        this.hoaByHoaId = hoasByHoaId;
+    }
+
+    @OneToMany(mappedBy = "addressByAddressId")
+    public Collection<Resident> getResidentsByAddressId() {
+        return residentsByAddressId;
+    }
+
+    public void setResidentsByAddressId(Collection<Resident> residentsesByAddressId) {
+        this.residentsByAddressId = residentsesByAddressId;
     }
 
     @OneToMany(mappedBy = "addressesByAddressId")
-    public Collection<Resident> getResidentsesByAddressId() {
-        return residentsesByAddressId;
+    public Collection<User> getUsersByAddressId() {
+        return usersByAddressId;
     }
 
-    public void setResidentsesByAddressId(Collection<Resident> residentsesByAddressId) {
-        this.residentsesByAddressId = residentsesByAddressId;
-    }
-
-    @OneToMany(mappedBy = "addressesByAddressId")
-    public Collection<User> getUsersesByAddressId() {
-        return usersesByAddressId;
-    }
-
-    public void setUsersesByAddressId(Collection<User> usersesByAddressId) {
-        this.usersesByAddressId = usersesByAddressId;
+    public void setUsersByAddressId(Collection<User> usersesByAddressId) {
+        this.usersByAddressId = usersesByAddressId;
     }
 
 }
