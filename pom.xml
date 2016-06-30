@@ -25,7 +25,7 @@
         <groupId>com.oracle</groupId>
 <!--нужно скачать ojdbc7 12.1.0 и добавить в локальный репозиторий maven -->
             <artifactId>ojdbc7</artifactId>
-        <version>12.1.0.1</version>
+        <version>12.1.0</version>
         </dependency>
 
         <dependency>
