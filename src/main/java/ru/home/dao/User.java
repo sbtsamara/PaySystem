@@ -14,7 +14,7 @@ public class User{
     private int addressId;
     private String roleId;
     private Address addressByAddressId;
-    private Role rolesByRoleId;
+    private Role roleByRoleId;
 
     public User(String userId, String userPassword, int addressId, String roleId) {
         this.userId = userId;
@@ -103,12 +103,12 @@ public class User{
 
     @ManyToOne
     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID", insertable = false, updatable = false)
-    public Role getRolesByRoleId() {
-        return rolesByRoleId;
+    public Role getRoleByRoleId() {
+        return roleByRoleId;
     }
 
-    public void setRolesByRoleId(Role rolesByRoleId) {
-        this.rolesByRoleId = rolesByRoleId;
+    public void setRoleByRoleId(Role rolesByRoleId) {
+        this.roleByRoleId = rolesByRoleId;
 
     }
 

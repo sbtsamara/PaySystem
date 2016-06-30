@@ -1,9 +1,3 @@
-<%@ page import="ru.home.dao.User" %>
-<%@ page import="ru.home.dao.Resident" %>
-<%@ page import="ru.home.utils.DbHelper" %>
-<%@ page import="ru.home.dao.Address" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="ru.home.dao.Abonent" %>
 <%--
   Created by IntelliJ IDEA.
   User: Vo4ik

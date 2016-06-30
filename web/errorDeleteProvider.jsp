@@ -13,7 +13,8 @@
 <body>
 <h1 align="center">Ошибка удаления провайдера</h1>
 <form action="directoryProviderServlet" method="post">
-    <button type="submit" name="errorDeleteProvider" value="true">Готово</button>
+    <button type="submit" name="errorDelete
+    Provider" value="true">Готово</button>
 </form>
 </body>
 </html>

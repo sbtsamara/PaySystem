@@ -21,6 +21,25 @@
         <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>pdfServlet</servlet-name>
+        <servlet-class>ru.home.servlets.PdfServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pdfServlet</servlet-name>
+        <url-pattern>/pdfServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>backServlet</servlet-name>
+        <servlet-class>ru.home.servlets.BackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>backServlet</servlet-name>
+        <url-pattern>/backServlet</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>startServlet</servlet-name>
         <servlet-class>ru.home.servlets.StartServlet</servlet-class>
@@ -29,6 +48,25 @@
         <servlet-name>startServlet</servlet-name>
         <url-pattern>/startServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerCounterServlet</servlet-name>
+        <servlet-class>ru.home.servlets.RegisterCounterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerCounterServlet</servlet-name>
+        <url-pattern>/registerCounterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addRegServlet</servlet-name>
+        <servlet-class>ru.home.servlets.AddRegServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addRegServlet</servlet-name>
+        <url-pattern>/addRegServlet</url-pattern>
+    </servlet-mapping>
+
     <!--Перенаправление на страницу справочника поставщиков-->
     <servlet>
         <servlet-name>directoryProviderServlet</servlet-name>

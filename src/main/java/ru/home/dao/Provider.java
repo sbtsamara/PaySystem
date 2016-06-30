@@ -1,6 +1,5 @@
 package ru.home.dao;
 
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -27,7 +26,6 @@ public class Provider {
         this.providerName = providerName;
         this.providerAddress = providerAddress;
     }
-
 
     public Provider(String providerName, String providerAddress)
     {
@@ -91,7 +89,7 @@ public class Provider {
         return result;
     }
 
-    @OneToMany(mappedBy = "providersByProviderId")
+    @OneToMany(mappedBy = "providerByProviderId")
     public Collection<Service> getServicesByProviderId() {
         return servicesByProviderId;
     }
@@ -99,6 +97,4 @@ public class Provider {
     public void setServicesByProviderId(Collection<Service> servicesByProviderId) {
         this.servicesByProviderId = servicesByProviderId;
     }
-
-
 }

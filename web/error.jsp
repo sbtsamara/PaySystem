@@ -1,19 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ivan
-  Date: 20.06.16
-  Time: 7:56
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
 <html>
 <head>
-    <title>Error</title>
+    <title>Start page</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    Неверный логин или пароль
-    <form action="index.jsp" method="post">
-        <input type="submit" value="Повторить"/>
-    </form>
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" action="startServlet" method="post">
+            <input type="text" name="login" placeholder="username"/>
+            <input type="password" name="password" placeholder="password"/>
+            <input type="submit" class="button" name="enter" value="Login In" />
+            <p class="text">Неверный логин или пароль!!!</p>
+        </form>
+    </div>
+</div>
 </body>
 </html>
